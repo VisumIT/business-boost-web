@@ -1,17 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
 
-import Empresa from './components/empresa/Empresa'
+import Routes from './routes/Routes';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.min.js';
 
+function App (){
 
-function App() {
-  return (
-    <>
-      <Empresa />
-    </>
-  );
-}
-
-export default App;
+    return (
+    <Routes />
+    )
+  }
+  
+  export default App;

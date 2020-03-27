@@ -25,6 +25,7 @@ function Empresa() {
     const enviaDados = async (e) => {
         e.preventDefault()
         console.log(empresaInput)
+
         return
         axios.post('http://localhost:8080/empresa', {
                 empresaInput
@@ -47,8 +48,8 @@ function Empresa() {
                         className="form-control"
                         placeholder="nome fantasia" 
                         type="text" 
-                        name="nome_fantasia" 
-                        value={empresaInput.nome_fantasia}
+                        name="nomeFantasia" 
+                        value={empresaInput.nomeFantasia}
                         onChange={handleChange} 
                     />
                 </div>
