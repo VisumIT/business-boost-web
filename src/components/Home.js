@@ -5,6 +5,7 @@ import Empresa from './Empresa';
 import Representante from './Representante';
 import Dashboard from './Dashboard';
 import Navbar from './Navbar';
+import Products from './Products';
 
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
@@ -35,6 +36,7 @@ function Home() {
                     <PrivateRoutes path='/empresa' component={Empresa} />
                     <PrivateRoutes path='/representante' component={Representante} />
                     <PrivateRoutes path='/dashboard' component={Dashboard} />
+                    <PrivateRoutes path='/produto' component={Products} />
 
                 </Switch>
             </Router>
