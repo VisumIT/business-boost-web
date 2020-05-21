@@ -26,21 +26,30 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
 
 function Home() {
     return(
-        <>
+        <div className="container">
+
+        <div className="row">
             {/* <h1>Criando Menu de navegação</h1> */}
 
             <Router>
-                <Navbar /> 
+                <div className="col-6 col-md-2 sidebar">
+                    <Navbar /> 
+                </div>
 
-                <Switch>
-                    <PrivateRoutes path='/empresa' component={Empresa} />
-                    <PrivateRoutes path='/representante' component={Representante} />
-                    <PrivateRoutes path='/dashboard' component={Dashboard} />
-                    <PrivateRoutes path='/produto' component={Products} />
+                <div className="col-11 col-md-7">
+                    <Switch>
+                        <PrivateRoutes path='/empresa' component={Empresa} />
+                        <PrivateRoutes path='/representante' component={Representante} />
+                        <PrivateRoutes path='/dashboard' component={Dashboard} />
+                        <PrivateRoutes path='/produto' component={Products} />
 
-                </Switch>
+                    </Switch>
+                </div>
+
+                
             </Router>
-        </>
+        </div>
+        </div>
     )
   }
   

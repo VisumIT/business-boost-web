@@ -2,13 +2,18 @@ import React, {Component} from 'react';
 
 import Routes from './routes/Routes';
 
+import './App.css';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/js/bootstrap.min.js';
 
 function App (){
 
     return (
-    <Routes />
+      <div className="wrapper">
+        <Routes />
+
+      </div>
     )
   }
   

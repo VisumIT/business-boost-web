@@ -6,11 +6,11 @@ function Empresa() {
     const [ empresaInput, setEmpresaInput ] = useReducer(   
         ( state, newState ) => ( { ... state, ... newState } ) ,   
         {
-            nome_fantasia : 'Ester e Thales Vidros ME', 
-            razao_social : '49.135.462/0001-05', 
+            nomeFantasia : 'Ester e Thales Vidros ME', 
+            razaoSocial : '49.135.462/0001-05', 
             cnpj : '00.156.027/0001-78', 
-            inscricao_estadual : '308.151.126.745', 
-            email : 'suporte@esterethalesvidrosme.com.br', 
+            inscricaoEstadual : '308.151.126.745', 
+            email : 'suporte@esterethalesvidrosme.com.br',
             senha : '123', 
             site : 'www.esterethalesvidrosme.com.br', 
             descricao : 'Desde 2002 no mercado, a Vidraçaria Jardim Ester realiza seus projetos conquistando, através da excelência, os mais diversos clientes, desde empresas à residências.', 
@@ -57,10 +57,10 @@ function Empresa() {
                     <label htmlFor="exampleInputEmail1">Razão Social</label>
                     <input 
                         className="form-control"
-                        placeholder="razão social" 
+                        placeholder="razão social"
                         type="text" 
-                        name="razao_social" 
-                        value={empresaInput.razao_social}
+                        name="razaoSocial" 
+                        value={empresaInput.razaoSocial}
                         onChange={handleChange} 
                     />
                 </div>
@@ -82,8 +82,8 @@ function Empresa() {
                         className="form-control"
                         placeholder="Inscrição Estadual" 
                         type="text" 
-                        name="inscricao_estadual" 
-                        value={empresaInput.inscricao_estadual}
+                        name="inscricaoEstadual" 
+                        value={empresaInput.inscricaoEstadual}
                         onChange={handleChange} 
                     />
                 </div>
