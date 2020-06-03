@@ -1,32 +1,41 @@
-import React, { useReducer, useState } from 'react';
+import React, {Component, useReducer, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import foto from "./fts/foto.jpg";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
-
+import InputMask from 'react-input-mask';
 import axios from 'axios'
+
+/*
+
+Victor F. Amaral
+Cadastro dos representantes
+
+*/
+
 
 
 function Representante () {
     
     var [ representanteInput, setRepresentanteInput] = useReducer(
         ( state, newState ) => ( {...state, ...newState} ),
-        {
+        {   
+            id: '',
             foto: "ssssss.jpg",
             cpf: '666666',
             nome : 'Victor',
             email: '123@g.com',
             senha: '123',
             descricao: 'ssssss',
-            dataNascimento: '26122002',
+            dataNascimento: '20021112',
             sexo: 'M'
         
         }
     );
 
    
-    var [telefoneInput, setTelefoneInput] = useState( '222')
+    var [telefoneInput, setTelefoneInput] = useState( '5555555')
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -34,7 +43,7 @@ function Representante () {
         setRepresentanteInput({[name] : value})
     }
 
- 
+
     
     const enviaDados = async (e) => {
         e.preventDefault()
@@ -43,44 +52,22 @@ function Representante () {
                {numero: telefoneInput}
            ],
            ...representanteInput
+
       }
    
     
         console.log(representanteInput);
-        
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        
-       
-        
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: representanteInput,
-          redirect: 'follow'
-        };
-        
-        fetch("http://localhost:8080/representante", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log(result))
-          .catch(error => console.log('error', error));
-
-  return
-
-
-
-
+        console.log(telefoneInput);
 
         axios.post('http://localhost:8080/representante', 
-            representanteInput
-        )
-        .then(function(response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });           
-        
+                representanteInput
+            )
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+        });
     }
 
   
@@ -89,6 +76,7 @@ function Representante () {
         setRepresentanteInput(
 
             {
+                id: '' ,
                 foto: {foto},
                 cpf: '',
                 nome : '',
@@ -161,17 +149,22 @@ function Representante () {
                                         <div className="col-md-10">
                                             <div className="form-group">
                                                 <label className="control-label">Telefone</label>
-                                                <input 
+                                                <InputMask 
                                                     autoComplete="off"
                                                     placeholder="Telefone"  
                                                     type="text" 
                                                     className="form-control"
-                                                    onChange={setTelefoneInput}    
+                                                    onChange={e => setTelefoneInput(e.target.value)} 
+                                                       
                                                     required
                                                     value={telefoneInput}
-                                                    name="numero">
+                                                    name="numero"
+                                                    
+                                                    mask="+5\5 99999-9999"
+                                                    >
 
-                                                </input>
+                                                </InputMask>
+                                                {console.log(telefoneInput)}
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +173,7 @@ function Representante () {
                                         <div className="col-md-5">
                                             <div className="form-group">
                                                 <label className="control-label">Nascimento</label>
-                                                <input 
+                                                <InputMask 
                                                     autoComplete="off"
                                                     placeholder="Data de Nascimento"  
                                                     type="text" 
@@ -188,9 +181,11 @@ function Representante () {
                                                     onChange={handleChange}    
                                                     required
                                                     value={representanteInput.dataNascimento}
-                                                    name="dataNascimento">
+                                                    name="dataNascimento"
+                                                    mask="9999/99/99"
+                                                    >
 
-                                                </input>
+                                                </InputMask>
                                             </div>
                                         </div>
                                         <div className="col-md-5">
@@ -247,7 +242,7 @@ function Representante () {
                                         <div className="col-md-8">
                                             <div className="form-group">
                                                 <label className="control-label">Cpf</label>
-                                                <input 
+                                                <InputMask 
                                                     autoComplete="off"
                                                     placeholder="Cpf" 
                                                     type="text" 
@@ -255,9 +250,11 @@ function Representante () {
                                                     onChange={handleChange}    
                                                     required
                                                     value={representanteInput.cpf}
-                                                    name="cpf">
+                                                    name="cpf"
+                                                    mask="999.999.999-99"
+                                                    >
 
-                                                </input>
+                                                </InputMask>
                                             </div>
                                         </div>
                                     </div>

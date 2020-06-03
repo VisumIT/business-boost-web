@@ -5,6 +5,17 @@ import foto from "./fts/foto.jpg";
 import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faList, faEdit, faTrash} from '@fortawesome/free-solid-svg-icons'
+import api from '../services/api'
+import { Link, Redirect } from 'react-router-dom'
+
+
+
+/*
+
+Victor F. Amaral
+Listagem e mostra dos representantes
+
+*/
 
 
 export default class ListaRepresentante extends Component {
@@ -18,16 +29,36 @@ export default class ListaRepresentante extends Component {
     }
 
  componentDidMount() {
-        axios.get("http://localhost:8080/representante")
-            .then(response => response.data)
-            .then((data) => {
-                this.setState({representantes: data})
-                
-            })
+        this.mostrarRepresentantes();
     }
 
-    deletar = (representantesid) => {
-        alert(representantesid)
+    mostrarRepresentantes() {
+        api.get('/representante')
+        .then(response => {
+            this.setState({
+                representantes: response.data
+            })
+        })
+        
+        // axios.get(api)
+        //     .then(response => response.data)
+        //     .then((data) => {
+        //         this.setState({representantes: data})
+                
+        //     })
+    }
+
+    deletar = (id) => {
+        axios.delete("http://localhost:8080/representante/" + id)
+            .then(response => {
+            if(response.data != null) {
+                alert('representante deletado')
+                this.setState({
+                    representantes: this.state.representantes.filter(representantes =>
+                 representantes.id !== id)
+                })
+            }
+        })
     }
 
 render() {
@@ -37,8 +68,8 @@ render() {
         <Table bordered hover striped variant="dark">
             <thead>
                 <tr>
-                <th>cpf</th>
                 <th>Nome</th>
+                <th>cpf</th>
                 <th>Email</th>
                 <th>Telefone</th>
                 <th>Editar</th>
@@ -54,10 +85,10 @@ render() {
                        <tr key={representantes.id}>
                            <td>
                                 <Image  src={foto} roundedCircle width="25" height="25"/>
-                                {representantes.cpf}
+                                {representantes.nome}
                            </td>
                            <td>
-                                {representantes.nome}
+                                {representantes.cpf}
                            </td>
                            <td>
                                 {representantes.email}
@@ -67,9 +98,8 @@ render() {
                            </td>
                            <td>
                                 <ButtonGroup>
-                                    <Button size="sm" variant="outline-primary"><FontAwesomeIcon icon={faEdit}/></Button>{' '}
-                                    <Button size="sm" variant="outline-danger" onClick={this.deletar.bind(this.representantesid)}><FontAwesomeIcon icon={faTrash}/></Button>{' '}
-
+                                    <Link class="btn btn-sm btn-outline-primary" to={"/Editarepresentantes" + representantes.id}><FontAwesomeIcon icon={faEdit}/></Link>{' '}
+                                    <Button size="sm" variant="outline-danger" onClick={( ) => {this.deletar(representantes.id)}}><FontAwesomeIcon icon={faTrash}/></Button>{' '}                                  
                                 </ButtonGroup>
                            </td>
                        </tr> 
