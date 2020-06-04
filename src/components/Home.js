@@ -1,12 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Empresa from './Empresa';
+import Empresa from './Empresa/Empresa';
+import AddEmpresa from './Empresa/AddEmpresa';
+import EditEmpresa from './Empresa/EditEmpresa'
 import Representante from './Representante';
 import Dashboard from './Dashboard';
 import Navbar from './Navbar';
 import Products from './Products';
-
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
     return(
@@ -26,29 +27,29 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
 
 function Home() {
     return(
-        <div className="container">
+        <div className="container-fluid wrapper bg-light">
 
-        <div className="row">
-            {/* <h1>Criando Menu de navegação</h1> */}
+            <div className="row wrapper">
+                <Router>
+                    <div className="col-2 col-md-2 sidebar text-center">
+                        <Navbar /> 
+                    </div>
 
-            <Router>
-                <div className="col-6 col-md-2 sidebar">
-                    <Navbar /> 
-                </div>
+                    <div className="col-10 col-md-10 p-0">
+                        <Switch>
+                            <PrivateRoutes path='/empresa' component={Empresa} />
+                            <PrivateRoutes path='/addEmpresa' component={AddEmpresa}/>
+                            <PrivateRoutes path='/editEmpresa/:id' component={EditEmpresa}/>
+                            <PrivateRoutes path='/representante' component={Representante} />
+                            <PrivateRoutes path='/dashboard' component={Dashboard} />
+                            <PrivateRoutes path='/produto' component={Products} />
 
-                <div className="col-11 col-md-7">
-                    <Switch>
-                        <PrivateRoutes path='/empresa' component={Empresa} />
-                        <PrivateRoutes path='/representante' component={Representante} />
-                        <PrivateRoutes path='/dashboard' component={Dashboard} />
-                        <PrivateRoutes path='/produto' component={Products} />
+                        </Switch>
+                    </div>
+                    
+                </Router>
+            </div>
 
-                    </Switch>
-                </div>
-
-                
-            </Router>
-        </div>
         </div>
     )
   }
