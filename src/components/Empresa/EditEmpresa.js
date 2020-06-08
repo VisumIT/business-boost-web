@@ -3,8 +3,8 @@ import Api from '../../axios/api'
 
 class EditEmpresa extends Component {
 
-    state={
-        id:'',
+    state = {
+        id: '',
         nomeFantasia: '',
         razaoSocial: '',
         cnpj: '',
@@ -15,20 +15,20 @@ class EditEmpresa extends Component {
         descricao: ''
     }
 
-    componentDidMount= async()=>{
+    componentDidMount = async () => {
         const id = this.props.match.params.id
         const res = await Api.get('/empresa/' + id)
 
         this.setState({
-            id:res.data.id,
-            nomeFantasia:res.data.nomeFantasia,
-            razaoSocial:res.data.razaoSocial,
-            cnpj:res.data.cnpj,
-            inscricaoEstadual:res.data.inscricaoEstadual,
-            email:res.data.email,
-            senha:res.data.senha,
-            site:res.data.site,
-            descricao:res.data.descricao
+            id: res.data.id,
+            nomeFantasia: res.data.nomeFantasia,
+            razaoSocial: res.data.razaoSocial,
+            cnpj: res.data.cnpj,
+            inscricaoEstadual: res.data.inscricaoEstadual,
+            email: res.data.email,
+            senha: res.data.senha,
+            site: res.data.site,
+            descricao: res.data.descricao
         })
     }
 
@@ -44,7 +44,7 @@ class EditEmpresa extends Component {
 
     render() {
 
-        const {nomeFantasia,razaoSocial,cnpj,inscricaoEstadual,email,senha,site,descricao} = this.state
+        const { nomeFantasia, razaoSocial, cnpj, inscricaoEstadual, email, senha, site, descricao } = this.state
 
         return (
             <div className="container">
