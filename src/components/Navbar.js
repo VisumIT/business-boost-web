@@ -9,19 +9,19 @@ function Navbar () {
         <>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <Link class="nav-link active text-dark" to="/dashboard">Dashboard</Link>
+                    <Link class="nav-link active text-dark" to="/user/dashboard">Dashboard</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link active text-dark" to="/empresa">Empresa</Link>
+                    <Link class="nav-link active text-dark" to="/user/empresa">Empresa</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link active text-dark" to="/addEmpresa">Add Empresa</Link>
+                    <Link class="nav-link active text-dark" to="/user/addEmpresa">Add Empresa</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link active text-dark" to="/representante">Representante</Link>
+                    <Link class="nav-link active text-dark" to="/user/representante">Representante</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link active text-dark" to="/produto">Produtos</Link>
+                    <Link class="nav-link active text-dark" to="/user/produto">Produtos</Link>
                 </li>
             </ul>
         </>

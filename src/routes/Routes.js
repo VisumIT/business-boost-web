@@ -1,6 +1,9 @@
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from '../components/Login';
+import CadastroEmpresa from '../components/CadastroEmpresa';
+import Inicial from '../components/Inicial';
 import Home from '../components/Home';
 
 
@@ -12,13 +15,15 @@ const NotFound = () => {
     )
 }
 
-
-const Routes = () => {
+function Routes(){
 
     return(
         <Router>
             <Switch>
-                <Route path='/' component={Home} />
+                <Route path='/users/sign_up' component={CadastroEmpresa} />
+                <Route path='/users/sign_in' component={Login} />
+                <Route path='/user/home' component={Home} />
+                <Route path='/' component={Inicial} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

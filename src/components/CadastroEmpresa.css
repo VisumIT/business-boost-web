@@ -1,5 +1,5 @@
 .img-representante{
-    background: linear-gradient(0deg, rgba(42, 187, 207, 0.59), rgba(42, 187, 207, 0.59)), url(../imagens/representante-comercial-ecommerce-b2b.jpg);
+    background: linear-gradient(0deg, rgba(42, 187, 207, 0.59), rgba(42, 187, 207, 0.59)), url(/imagens/representante-comercial-ecommerce-b2b.jpg);
     box-shadow: inset 0px 4px 100px rgba(0, 0, 0, 1);
     background-size: cover;
     background-position: center;
@@ -7,13 +7,13 @@
     border-right: 3px solid rgba(0, 0, 0, 0.8);
 }
 
-html, body {
+#inicial {
     height: 100%;
 }
 
 .row-logo{
     height: 60px;
-    background-image: url(../imagens/kisspng-logo-clip-art-brand-rocket-design-logo-rocket-favicon-red-smmrocket-5bd5e2b1afa5d5.6747100915407438577195.png);
+    background-image: url(/imagens/kisspng-logo-clip-art-brand-rocket-design-logo-rocket-favicon-red-smmrocket-5bd5e2b1afa5d5.6747100915407438577195.png);
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
@@ -34,7 +34,7 @@ html, body {
 }
 
 .img-visum{
-    background-image: url(../imagens/logo-original-fundo-claro.png);
+    background-image: url(/imagens/logo-original-fundo-claro.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,7 +42,7 @@ html, body {
 
 .row-logo-empresa{
     height: 250px;
-    background-image: url(../imagens/logo-original-fundo-claro.png);
+    background-image: url(/imagens/logo-original-fundo-claro.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
