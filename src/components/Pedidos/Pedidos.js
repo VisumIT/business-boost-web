@@ -122,7 +122,8 @@ componentWillMount(){
                                             {/* <a>Email</a> */}
                                         </td>
                                         <td className="py-2 align-middle">
-                                            {pedido.createDate}
+                                            <strong>{ pedido.createDate.split('T')[0] + " " }</strong> 
+                                            { (pedido.createDate.split('T')[1].split('.')[0]) }
                                         </td>
                                         <td className="py-2 align-middle">
                                         {(pedido.company.phones.map(phone => (
@@ -147,7 +148,7 @@ componentWillMount(){
                                         
                                         
                                     </tr>
-                                    ))
+                                    ) ).reverse()
                                     }
                                 </tbody>
                             </Table>
