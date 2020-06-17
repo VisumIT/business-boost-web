@@ -40,12 +40,6 @@ export default class ListaRepresentante extends Component {
             })
         })
         
-        // axios.get(api)
-        //     .then(response => response.data)
-        //     .then((data) => {
-        //         this.setState({representantes: data})
-                
-        //     })
     }
 
     deletar = (id) => {

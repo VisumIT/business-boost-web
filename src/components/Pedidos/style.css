@@ -1,0 +1,24 @@
+.table-dashboard {
+    overflow: hidden;
+}
+
+.table-dashboard-th-nowrap thead th {
+    white-space: nowrap!important;
+}
+
+.sortable  {
+    cursor: pointer;
+}
+
+.badge-soft-success {
+    color: #5ce2aa;
+    background-color: #0b403e;
+}
+
+.g1 {
+    transform:"translate(256 256)"
+}
+
+.g2 {
+    transform:"translate(0, 0)  scale(0.875, 0.875)  rotate(0 0 0)"
+}
