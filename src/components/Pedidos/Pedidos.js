@@ -15,27 +15,34 @@ Victor F. Amaral
  class Pedidos extends Component{
 
  state = {
-     Pedidos: []
+     pedidos: []
  }
 
  componentDidMount () {
     api.get('/orders')
     .then(response => {
         this.setState({
-            Pedidos:response.data
+            pedidos:response.data
         })
         
     })
     
 }
 
+componentWillMount(){
+    
+}
+
+
+
+
+
 
     render () {
-
+        var listaPedidos = this.state.pedidos;
         return (
             
             <div className="mb-3 card">
-                {console.log(this.state.Pedidos)}
                 <div className="card-header">
                     <div className="alignm-items-center">
                         <div className="col">
@@ -91,11 +98,13 @@ Victor F. Amaral
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.state.Pedidos.length === 0 ?
+                                    {listaPedidos.length === 0 ?
                                         <h1>Teste</h1>:
 
-                                    this.state.Pedidos.map((Pedidos) =>(
-                                    <tr className="btn-reveal-trigger" key={Pedidos.id}>
+                                    listaPedidos.map(pedido =>(
+                                        
+                                    <tr className="btn-reveal-trigger" key={pedido.id}>
+                                        
                                         <td className="selection-cell">
                                             <div className="custom-control custom-checkbox">
                                                 <input className="custom-control-input"/>
@@ -106,16 +115,20 @@ Victor F. Amaral
                                         <td className="py-2 align-middle">
                                             <a>
                                                 <strong>
-                                                    #{Pedidos[0].totalPrice} 
+                                                    {pedido.id}
                                                 </strong>
                                             </a>                                            
                                             <br/>
-                                            <a>Email</a>
+                                            {/* <a>Email</a> */}
                                         </td>
                                         <td className="py-2 align-middle">
-                                            20/02/2002
+                                            {pedido.createDate}
                                         </td>
                                         <td className="py-2 align-middle">
+                                        {(pedido.company.phones.map(phone => (
+                                            phone.number + ", "
+                                        )))}
+                                            
                                             Comprador, endereço, bairro, Cidade e numero
                                             <p className="mb-0 text-500"></p>
                                         </td>
@@ -127,9 +140,11 @@ Victor F. Amaral
                                                 </sgv>
                                             </span>
                                         </td>
+                                        
                                         <td className="py-2 align-middle">
-                                            {/* {Pedidos.items.prices} */}
+                                        {/* {console.log( this.state.pedidos.company.phones[0].id)} */}
                                         </td>
+                                        
                                         
                                     </tr>
                                     ))
