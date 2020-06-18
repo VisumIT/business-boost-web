@@ -24,12 +24,12 @@ function Representante () {
             id: '',
             foto: "ssssss.jpg",
             cpf: '666666',
-            nome : 'Victor',
+            name : 'Victor',
             email: '123@g.com',
-            senha: '123',
-            descricao: 'ssssss',
-            dataNascimento: '20021112',
-            sexo: 'M'
+            password: '123',
+            description: 'ssssss',
+            dateOfBirth: '20021112',
+            gender: 'M'
         
         }
     );
@@ -59,7 +59,7 @@ function Representante () {
         console.log(representanteInput);
         console.log(telefoneInput);
 
-        axios.post('http://localhost:8080/representante', 
+        axios.post('http://localhost:8080/representatives', 
                 representanteInput
             )
             .then(function(response) {
@@ -79,15 +79,15 @@ function Representante () {
                 id: '' ,
                 foto: {foto},
                 cpf: '',
-                nome : '',
+                name : '',
                 email: '',
-                senha: '',
-                telefone: [
-                    {numero: ''}
+                password: '',
+                phones: [
+                    {number: ''}
                 ],
-                descricao: '',
-                dataNascimento: '',
-                sexo: ''
+                description: '',
+                dateOfBirth: '',
+                gender: ''
                 
             }
 
@@ -119,7 +119,7 @@ function Representante () {
                                                     placeholder="Nome"  
                                                     type="text" 
                                                     onChange={handleChange}    
-                                                    value={representanteInput.nome}
+                                                    value={representanteInput.name}
                                                     name="nome"
                                                     required
                                                     className="form-control">
@@ -137,7 +137,7 @@ function Representante () {
                                                     type="text" className="form-control"
                                                     onChange={handleChange} 
                                                     required   
-                                                    value={representanteInput.descricao}
+                                                    value={representanteInput.description}
                                                     name="descricao"
                                                     >
 
@@ -180,7 +180,7 @@ function Representante () {
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.dataNascimento}
+                                                    value={representanteInput.dateOfBirth}
                                                     name="dataNascimento"
                                                     mask="9999/99/99"
                                                     >
@@ -198,7 +198,7 @@ function Representante () {
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.sexo}
+                                                    value={representanteInput.gender}
                                                     name="sexo">
 
                                                 </input>
@@ -233,7 +233,7 @@ function Representante () {
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.senha}
+                                                    value={representanteInput.password}
                                                     name="senha">
 
                                                 </input>
