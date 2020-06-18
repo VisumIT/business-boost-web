@@ -33,7 +33,7 @@ export default class ListaRepresentante extends Component {
     }
 
     mostrarRepresentantes() {
-        api.get('/representante')
+        api.get('/representatives')
         .then(response => {
             this.setState({
                 representantes: response.data
@@ -49,7 +49,7 @@ export default class ListaRepresentante extends Component {
     }
 
     deletar = (id) => {
-        axios.delete("http://localhost:8080/representante/" + id)
+        axios.delete("http://localhost:8080/representatives/" + id)
             .then(response => {
             if(response.data != null) {
                 alert('representante deletado')
@@ -85,7 +85,7 @@ render() {
                        <tr key={representantes.id}>
                            <td>
                                 <Image  src={foto} roundedCircle width="25" height="25"/>
-                                {representantes.nome}
+                                {representantes.name}
                            </td>
                            <td>
                                 {representantes.cpf}
