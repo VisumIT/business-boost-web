@@ -26,14 +26,6 @@ Victor F. Amaral
     
 }
 
-componentWillMount(){
-    
-}
-
-
-
-
-
 
     render () {
         var listaPedidos = this.state.pedidos;
@@ -75,7 +67,7 @@ componentWillMount(){
                                             </span>
                                         </th>
                                         <th tabIndex="0" arial-label="Data sortable" className="sortable">
-                                            Vendido para
+                                            Endereço do vendedor
                                             <span className="order-4">
                                                 
                                             </span>
@@ -123,16 +115,19 @@ componentWillMount(){
                                             { (pedido.createDate.split('T')[1].split('.')[0]) }
                                         </td>
                                         <td className="py-2 align-middle">
-                                        {(pedido.company.phones.map(phone => (
-                                            phone.number + ", "
-                                        )))}
+                                            {/* {(pedido.company.phones.map(phone => (
+                                                phone.number + ", "
+                                            )))} */}
+                                            {listaPedidos[0].company.publicPlace}{" "}
+                                            {listaPedidos[0].company.address}{" "}
+                                            {listaPedidos[0].company.neighborhood}{" "}
+                                            {listaPedidos[0].company.number}{" "}
                                             
-                                            Comprador, endereço, bairro, Cidade e numero
-                                            <p className="mb-0 text-500"></p>
+
                                         </td>
                                         <td className="py-2 align-middle">
-                                            <span className="rounded-circle fs--1 d-block badge badge-soft-success">
-                                                completo
+                                            <span className="d-block p-2 badge badge-soft-success">
+                                                {pedido.status}
                                                 <sgv>
                                                     
                                                 </sgv>
@@ -140,7 +135,7 @@ componentWillMount(){
                                         </td>
                                         
                                         <td className="py-2 align-middle">
-                                        {/* {console.log( this.state.pedidos.company.phones[0].id)} */}
+                                            
                                         </td>
                                         
                                         
