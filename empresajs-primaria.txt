@@ -1,0 +1,87 @@
+import React, { useReducer } from 'react';
+<<<<<<< HEAD:src/components/Empresa.js
+import 'bootstrap/dist/css/bootstrap.min.css';
+=======
+import axios from 'axios'
+>>>>>>> de08199db4910fa4dea20000e517c29d99a14530:empresajs-primaria.txt
+
+
+
+/*
+
+<<<<<<< HEAD:src/components/Empresa.js
+Listagem de Pedidos
+
+Victor F. Amaral
+
+*/
+=======
+    const enviaDados = async (e) => {
+        e.preventDefault()
+        console.log(empresaInput)
+        axios.post('http://localhost:8080/empresa',empresaInput)
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+        });
+    }
+
+    const mostrarDados = async(e) => {
+        axios.get('http://localhost:8080/empresa')
+    }
+
+    return(
+        <div className="container">
+            {console.log(empresaInput)}
+            <form method="post" onSubmit={enviaDados}>
+                <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Nome Fantasia</label>
+                    <input 
+                        className="form-control"
+                        placeholder="nome fantasia" 
+                        type="text" 
+                        name="nomeFantasia" 
+                        value={empresaInput.nomeFantasia}
+                        onChange={handleChange} 
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Razão Social</label>
+                    <input 
+                        className="form-control"
+                        placeholder="razão social"
+                        type="text" 
+                        name="razaoSocial" 
+                        value={empresaInput.razaoSocial}
+                        onChange={handleChange} 
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">CNPJ</label>
+                    <input 
+                        className="form-control"
+                        placeholder="CNPJ" 
+                        type="text" 
+                        name="cnpj" 
+                        value={empresaInput.cnpj}
+                        onChange={handleChange} 
+                    />
+                </div>
+>>>>>>> de08199db4910fa4dea20000e517c29d99a14530:empresajs-primaria.txt
+
+function Empresa () {
+
+
+
+
+
+    return (
+        <div className="mb-3 card">
+            
+        </div>
+    )
+}
+
+export default Empresa
