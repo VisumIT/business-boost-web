@@ -26,6 +26,14 @@ Victor F. Amaral
     
 }
 
+componentWillMount(){
+    
+}
+
+
+
+
+
 
     render () {
         var listaPedidos = this.state.pedidos;
@@ -123,10 +131,9 @@ Victor F. Amaral
                                             {listaPedidos[0].company.neighborhood}{" "}
                                             {listaPedidos[0].company.number}{" "}
                                             
-
                                         </td>
                                         <td className="py-2 align-middle">
-                                            <span className="d-block p-2 badge badge-soft-success">
+                                            <span className="d-block p-4 badge badge-soft-success">
                                                 {pedido.status}
                                                 <sgv>
                                                     
