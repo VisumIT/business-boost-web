@@ -5,30 +5,30 @@ class EditEmpresa extends Component {
 
     state = {
         id: '',
-        nomeFantasia: '',
-        razaoSocial: '',
+        fictitiousName: '',
+        companyName: '',
         cnpj: '',
-        inscricaoEstadual: '',
+        stateRegistration: '',
         email: '',
-        senha: '',
+        password: '',
         site: '',
-        descricao: ''
+        description: ''
     }
 
     componentDidMount = async () => {
         const id = this.props.match.params.id
-        const res = await Api.get('/empresa/' + id)
+        const res = await Api.get('/companies/' + id)
 
         this.setState({
             id: res.data.id,
-            nomeFantasia: res.data.nomeFantasia,
-            razaoSocial: res.data.razaoSocial,
+            fictitiousName: res.data.fictitiousName,
+            companyName: res.data.companyName,
             cnpj: res.data.cnpj,
-            inscricaoEstadual: res.data.inscricaoEstadual,
+            stateRegistration: res.data.stateRegistration,
             email: res.data.email,
-            senha: res.data.senha,
+            password: res.data.password,
             site: res.data.site,
-            descricao: res.data.descricao
+            description: res.data.description
         })
     }
 
@@ -38,13 +38,13 @@ class EditEmpresa extends Component {
 
     handlerSubmit = async (event) => {
         event.preventDefault()
-        await Api.put('/empresa/' + this.state.id, this.state)
-        this.props.history.push('/empresa')
+        await Api.put('/companies/' + this.state.id, this.state)
+        this.props.history.push('/user/company')
     }
 
     render() {
 
-        const { nomeFantasia, razaoSocial, cnpj, inscricaoEstadual, email, senha, site, descricao } = this.state
+        const { fictitiousName, companyName, cnpj, stateRegistration, email, password, site, description } = this.state
 
         return (
             <div className="container">
@@ -57,8 +57,8 @@ class EditEmpresa extends Component {
                             className="form-control"
                             placeholder="nome fantasia"
                             type="text"
-                            name="nomeFantasia"
-                            value={nomeFantasia}
+                            name="fictitiousName"
+                            value={fictitiousName}
                             onChange={this.handlerChange}
                         />
                     </div>
@@ -68,8 +68,8 @@ class EditEmpresa extends Component {
                             className="form-control"
                             placeholder="razão social"
                             type="text"
-                            name="razaoSocial"
-                            value={razaoSocial}
+                            name="companyName"
+                            value={companyName}
                             onChange={this.handlerChange}
                         />
                     </div>
@@ -91,8 +91,8 @@ class EditEmpresa extends Component {
                             className="form-control"
                             placeholder="Inscrição Estadual"
                             type="text"
-                            name="inscricaoEstadual"
-                            value={inscricaoEstadual}
+                            name="stateRegistration"
+                            value={stateRegistration}
                             onChange={this.handlerChange}
                         />
                     </div>
@@ -108,17 +108,19 @@ class EditEmpresa extends Component {
                             onChange={this.handlerChange}
                         />
                     </div>
+
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Senha</label>
                         <input
                             className="form-control"
                             placeholder="Senha"
-                            type="text"
-                            name="senha"
-                            value={senha}
+                            type="password"
+                            name="password"
+                            value={password}
                             onChange={this.handlerChange}
                         />
                     </div>
+
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Site</label>
                         <input
@@ -138,8 +140,8 @@ class EditEmpresa extends Component {
                             rows="3"
                             placeholder="Descrição"
                             type="text"
-                            name="descricao"
-                            value={descricao}
+                            name="description"
+                            value={description}
                             onChange={this.handlerChange}></textarea>
                     </div>
                     <button type="submit" className="btn btn-primary mb-4">Editar</button>

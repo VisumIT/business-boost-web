@@ -5,23 +5,22 @@ import Api from '../../axios/api';
 class Empresa extends Component {
 
     state={
-        empresa:[]
+        companies:[]
     }
 
     componentDidMount = async () => {
-        await Api.get("/empresa")
+        await Api.get("/companies")
             .then(response=>this.setState({
-                empresa:response.data
+                companies:response.data
             }))
-
             console.log(this.state)
     }
-    
+
     render(){
 
-        const renderData = this.state.empresa.map(empresa=>{
+        const renderData = this.state.companies.map(companies=>{
             return(
-                <CardEmpresa empresa={empresa} key={empresa.id} refresh={this.componentDidMount}/>
+                <CardEmpresa companies={companies} key={companies.id} refresh={this.componentDidMount}/>
             )
         })
 

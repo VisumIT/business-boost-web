@@ -23,7 +23,7 @@ function Routes(){
                 <Route path='/users/sign_up' component={CadastroEmpresa} />
                 <Route path='/users/sign_in' component={Login} />
                 <Route path='/user/home' component={Home} />
-                <Route path='/' component={Inicial} />
+                <Route path='/' exact component={Inicial} />
                 <Route component={NotFound} />
             </Switch>
         </Router>
