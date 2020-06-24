@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Api from '../../axios/api'
+import InputMask from 'react-input-mask'
 
 class EditEmpresa extends Component {
 
@@ -75,7 +76,8 @@ class EditEmpresa extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">CNPJ</label>
-                        <input
+                        <InputMask
+                            mask="99.999.999/9999-99"
                             className="form-control"
                             placeholder="CNPJ"
                             type="text"
@@ -87,7 +89,8 @@ class EditEmpresa extends Component {
 
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Inscrição Estadual</label>
-                        <input
+                        <InputMask
+                            mask="999.999.999.999"
                             className="form-control"
                             placeholder="Inscrição Estadual"
                             type="text"

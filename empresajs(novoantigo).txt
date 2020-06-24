@@ -1,3 +1,7 @@
+//Codigo do cadastro da empresa tentando trazer os erros da api com then(response) e catch(error)
+
+
+
 import React, { Component } from 'react';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import InputMask from 'react-input-mask'
@@ -12,14 +16,14 @@ import './CadastroEmpresa.css'
 class CadastroEmpresa extends Component {
 
     state = {
-        fictitiousName: '',
-        companyName: '',
-        cnpj: '',
-        stateRegistration: '',
-        email: '',
-        password: '',
-        site: '',
-        description: ''
+        fictitiousName: 'cmd',
+        companyName: 'cam',
+        cnpj: '75.298.033/0001-69',
+        stateRegistration: '888.555.555.555',
+        email: 'cmd@saaa',
+        password: 'dewadwadadw',
+        site: 'awada',
+        description: 'adwaa',
     }
 
     async CadastroSucesso() {
@@ -34,74 +38,19 @@ class CadastroEmpresa extends Component {
         })
     }
 
-    async ErroCadastro(erro) {
-        confirmAlert({
-            title: 'Bussiness Boost',
-            message: erro.Errors[0].Message,
-            buttons: [
-                {
-                    label: 'Ok'
-                }
-            ]
-        })
-    }
-
     handlerChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
     handlerSubmit = async (event) => {
-        // console.log(this.state)
-        // event.preventDefault()
-        // try{
-        //     Api.post('/companies', this.state).then( () => {
-        //     this.props.history.push('/user/home')
-        //     this.CadastroSucesso()
-        //     })
-        // }catch(erro){
-        //     console.log(erro + "---")
-        // }
-        
+        console.log(this.state)
         event.preventDefault()
-
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({ 
-            "fictitiousName": this.state.fictitiousName, 
-            "companyName": this.state.companyName, 
-            "cnpj": this.state.cnpj, 
-            "stateRegistration": this.state.stateRegistration, 
-            "email": this.state.email, 
-            "password": this.state.password, 
-            "site": this.state.site, 
-            "description": this.state.description 
-        });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-
-        const teste = (teste) => {
-            console.log(teste)
-            if(teste.id != null){
-                this.props.history.push('/user/home')
-                this.CadastroSucesso()
-            }else{
-                this.ErroCadastro(teste)
-            }
-        }
-
-
-        fetch("http://localhost:8080/companies", requestOptions)
-            .then(response => response.json())
-            .then(result => teste(result))
-            .catch(error => console.log(error));
-            
+        Api.post('/companies', this.state).then((response) => {
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     render() {
@@ -140,7 +89,6 @@ class CadastroEmpresa extends Component {
                                 <h3 className="mx-auto">Olá!<br />Seja bem vindo ao<br />Bussiness Boost</h3>
                             </div>
                             <div className="row w-75 mx-auto pt-2 pb-2">
-
                                 <form className="mx-auto" onSubmit={this.handlerSubmit}>
                                     <div className="form-group">
                                         <label className="float-left" htmlFor="exampleInputEmail1">Nome Fantasia</label><br />
@@ -149,6 +97,7 @@ class CadastroEmpresa extends Component {
                                             placeholder="nome fantasia"
                                             type="text"
                                             name="fictitiousName"
+                                            value={this.state.fictitiousName}
                                             onChange={this.handlerChange}
                                             required
                                         />
@@ -160,6 +109,7 @@ class CadastroEmpresa extends Component {
                                             placeholder="razão social"
                                             type="text"
                                             name="companyName"
+                                            value={this.state.companyName}
                                             onChange={this.handlerChange}
                                             required
                                         />
@@ -172,6 +122,7 @@ class CadastroEmpresa extends Component {
                                             placeholder="CNPJ"
                                             type="text"
                                             name="cnpj"
+                                            value={this.state.cnpj}
                                             onChange={this.handlerChange}
                                             required
                                         />
@@ -185,6 +136,7 @@ class CadastroEmpresa extends Component {
                                             placeholder="Inscrição Estadual"
                                             type="text"
                                             name="stateRegistration"
+                                            value={this.state.stateRegistration}
                                             onChange={this.handlerChange}
                                             required
                                         />
@@ -197,6 +149,7 @@ class CadastroEmpresa extends Component {
                                             placeholder="Email"
                                             type="email"
                                             name="email"
+                                            value={this.state.email}
                                             onChange={this.handlerChange}
                                             required
                                         />
@@ -209,6 +162,7 @@ class CadastroEmpresa extends Component {
                                             type="password"
                                             minLength="8"
                                             name="password"
+                                            value={this.state.password}
                                             onChange={this.handlerChange}
                                             required
                                         />
@@ -237,7 +191,6 @@ class CadastroEmpresa extends Component {
                                     </div>
                                     <button type="submit" className="btn btn-primary mb-4">Enviar</button>
                                 </form>
-                                
                             </div>
 
                         </div>

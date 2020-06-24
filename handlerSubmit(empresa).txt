@@ -1,0 +1,8 @@
+//Codigo dentro do handler submit do cadastro da empresa
+//Esse codigo funciona porem não retorna o erro da api
+
+console.log(this.state)
+event.preventDefault()
+await Api.post('/companies', this.state)
+this.props.history.push('/user/home')
+this.CadastroSucesso()
