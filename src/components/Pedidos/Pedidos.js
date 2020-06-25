@@ -10,6 +10,7 @@ Victor F. Amaral
 */
 
 const ModalPedidos = (props) => {
+
   return (
     <div
       className="modal"
@@ -20,7 +21,7 @@ const ModalPedidos = (props) => {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Modal title</h5>
+            <h5 className="modal-title">Editar o pedido</h5>
             <button
               type="button"
               className="close"
@@ -34,7 +35,7 @@ const ModalPedidos = (props) => {
             </button>
           </div>
           <div className="modal-body">
-            <p>Modal body text goes here.</p>
+            
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-primary">
@@ -62,14 +63,16 @@ class Pedidos extends Component {
     super(props);
     this.state = {
       showModal: false,
-      pedidos: []
+      pedidos: [],
     }
   }
+
+  
 
   componentDidMount() {
     api.get("/orders").then((response) => {
       this.setState({
-        pedidos: []
+        pedidos: response.data
       });
     });
   }
@@ -154,7 +157,7 @@ class Pedidos extends Component {
                       arial-label="Data sortable"
                       className="sortable"
                     >
-                      Quantidade
+                      Editar 
                       <span className="order-4"></span>
                     </th>
                   </tr>
@@ -198,12 +201,11 @@ class Pedidos extends Component {
                             </span>
                           </td>
                           <td className="py-2 align-middle">
-                            d
                             <button
                               className="btn btn-primary"
                               onClick={this.showModal}
                             >
-                              Open Modal
+                              Editar Pedido
                             </button>
                           </td>
                         </tr>
