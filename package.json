@@ -12,18 +12,11 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "react": "^16.13.0",
-<<<<<<< HEAD
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.0",
     "react-fontawesome": "^1.7.1",
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.1.2",
-=======
-    "react-bootstrap": "^1.0.0",
-    "react-confirm-alert": "^2.6.1",
-    "react-dom": "^16.13.0",
-    "react-router-dom": "^5.2.0",
->>>>>>> de08199db4910fa4dea20000e517c29d99a14530
     "react-scripts": "3.4.0"
   },
   "scripts": {
