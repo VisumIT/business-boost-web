@@ -5,7 +5,7 @@ import foto from "./fts/foto.jpg";
 import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faList, faEdit, faTrash} from '@fortawesome/free-solid-svg-icons'
-import api from '../services/api'
+import api from '../../services/api'
 import { Link, Redirect } from 'react-router-dom'
 
 
