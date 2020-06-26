@@ -1,4 +1,4 @@
-import React, { Component, useReducer, useState } from "react";
+import React, { Component, useReducer, useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table, Image, ButtonGroup, Button } from "react-bootstrap";
 import "./style.css";
@@ -10,6 +10,15 @@ Victor F. Amaral
 */
 
 const ModalPedidos = (props) => {
+
+  const [pedidos, setPedidos] = useState([])
+
+  useEffect(async () => {
+     const response = await fetch('http://localhost:8080/orders')
+     const data = await response.json()
+     const [item ]= data.response
+     setPedidos(item)
+  },[])
 
   return (
     <div
@@ -34,9 +43,11 @@ const ModalPedidos = (props) => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          {pedidos &&
           <div className="modal-body">
-            
+            {pedidos.id}
           </div>
+          }
           <div className="modal-footer">
             <button type="button" className="btn btn-primary">
               Save changes
@@ -46,7 +57,7 @@ const ModalPedidos = (props) => {
               className="btn btn-secondary"
               data-dismiss="modal"
               onClick={() => {
-                props.showModal();
+                props.showModal("sim");
               }}
             >
               Close
