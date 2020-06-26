@@ -7,7 +7,6 @@ import Representante from './Representante';
 import Dashboard from './Dashboard';
 import Navbar from './Navbar';
 import Products from './Products';
-import CadastroEmpresa from './CadastroEmpresa';
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
     return(

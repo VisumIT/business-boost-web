@@ -139,7 +139,7 @@ class EditEmpresa extends Component {
                     <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">Descrição</label>
                         <textarea
-                            className="form-control"
+                            className="form-control textarea-resize"
                             rows="3"
                             placeholder="Descrição"
                             type="text"

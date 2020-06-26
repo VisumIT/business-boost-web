@@ -7,17 +7,17 @@ function Navbar () {
 
     return(
         <>
-            <ul class="nav flex-column">
-                <li class="nav-item">
+            <ul className="nav flex-column">
+                <li className="nav-item">
                     <Link className="nav-link active text-dark" to="/user/dashboard">Dashboard</Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <Link className="nav-link active text-dark" to="/user/company">Empresa</Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <Link className="nav-link active text-dark" to="/user/representante">Representante</Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <Link className="nav-link active text-dark" to="/user/produto">Produtos</Link>
                 </li>
             </ul>

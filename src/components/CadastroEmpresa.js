@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import InputMask from 'react-input-mask'
 
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
-
-import Api from '../axios/api'
 
 import './CadastroEmpresa.css'
 
@@ -35,9 +32,25 @@ class CadastroEmpresa extends Component {
     }
 
     async ErroCadastro(erro) {
+
+        var inputCnpj = document.getElementById('cnpj')
+        var inputEmail = document.getElementById('email')
+
+        if(erro.Errors){
+            var mensagem = erro.Errors[0].Message
+            if (erro.Errors[0].Field === 'cnpj') {
+                inputEmail.style.borderColor = "80bdff"
+                inputCnpj.style.borderColor = "red";
+            }
+        }else{
+            var mensagem = erro.message
+            inputCnpj.style.borderColor = "#80bdff"
+            inputEmail.style.borderColor = "red"
+        }
+
         confirmAlert({
             title: 'Bussiness Boost',
-            message: erro.Errors[0].Message,
+            message: "Registration error: " + mensagem,
             buttons: [
                 {
                     label: 'Ok'
@@ -134,84 +147,91 @@ class CadastroEmpresa extends Component {
                                 </form>
                             </nav>
                             <div className="row row-logo m-1">
-                                <h2>Login / Cadastre-se</h2>
+                                <h2 className="mx-auto">Seja bem vindo ao Bussiness Boost!</h2>
                             </div>
                             <div className="row m-5">
-                                <h3 className="mx-auto">Olá!<br />Seja bem vindo ao<br />Bussiness Boost</h3>
+                                <h3 className="mx-auto text-primary">Junte-se a nós e de um boost no seu negócio</h3>
                             </div>
-                            <div className="row w-75 mx-auto pt-2 pb-2">
+                            <div className="row w-75 mx-auto pt-2 pb-2 ">
 
-                                <form className="mx-auto" onSubmit={this.handlerSubmit}>
-                                    <div className="form-group">
-                                        <label className="float-left" htmlFor="exampleInputEmail1">Nome Fantasia</label><br />
-                                        <input
-                                            className="line-input"
-                                            placeholder="nome fantasia"
-                                            type="text"
-                                            name="fictitiousName"
-                                            onChange={this.handlerChange}
-                                            required
-                                        />
+                                <form className="mx-auto w-100" onSubmit={this.handlerSubmit}>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <label className="float-left" htmlFor="exampleInputEmail1">Nome Fantasia</label><br />
+                                            <input
+                                                className="line-input"
+                                                placeholder="nome fantasia"
+                                                type="text"
+                                                name="fictitiousName"
+                                                onChange={this.handlerChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <label className="float-left" htmlFor="exampleInputEmail1">Razão Social</label><br />
+                                            <input
+                                                className="line-input"
+                                                placeholder="razão social"
+                                                type="text"
+                                                name="companyName"
+                                                onChange={this.handlerChange}
+                                                required
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="form-group">
-                                        <label className="float-left mt-3" htmlFor="exampleInputEmail1">Razão Social</label><br />
-                                        <input
-                                            className="line-input"
-                                            placeholder="razão social"
-                                            type="text"
-                                            name="companyName"
-                                            onChange={this.handlerChange}
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="float-left mt-3" htmlFor="exampleInputEmail1">CNPJ</label><br />
-                                        <InputMask
-                                            mask="99.999.999/9999-99"
-                                            className="line-input"
-                                            placeholder="CNPJ"
-                                            type="text"
-                                            name="cnpj"
-                                            onChange={this.handlerChange}
-                                            required
-                                        />
-                                    </div>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <label className="float-left mt-3" htmlFor="exampleInputEmail1">CNPJ</label><br />
+                                            <InputMask
+                                                mask="99.999.999/9999-99"
+                                                className="line-input"
+                                                placeholder="CNPJ"
+                                                type="text"
+                                                name="cnpj"
+                                                id="cnpj"
+                                                onChange={this.handlerChange}
+                                                required
+                                            />
+                                        </div>
 
-                                    <div className="form-group">
-                                        <label className="float-left mt-3" htmlFor="exampleInputEmail1">Inscrição Estadual</label><br />
-                                        <InputMask
-                                            mask="999.999.999.999"
-                                            className="line-input"
-                                            placeholder="Inscrição Estadual"
-                                            type="text"
-                                            name="stateRegistration"
-                                            onChange={this.handlerChange}
-                                            required
-                                        />
+                                        <div className="form-group col-md-6">
+                                            <label className="float-left mt-3" htmlFor="exampleInputEmail1">Inscrição Estadual</label><br />
+                                            <InputMask
+                                                mask="999.999.999.999"
+                                                className="line-input"
+                                                placeholder="Inscrição Estadual"
+                                                type="text"
+                                                name="stateRegistration"
+                                                onChange={this.handlerChange}
+                                                required
+                                            />
+                                        </div>
                                     </div>
-
-                                    <div className="form-group">
-                                        <label className="float-left mt-3" htmlFor="exampleInputEmail1">Email</label><br />
-                                        <input
-                                            className="line-input"
-                                            placeholder="Email"
-                                            type="email"
-                                            name="email"
-                                            onChange={this.handlerChange}
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="float-left mt-3" htmlFor="exampleInputEmail1">Senha</label><br />
-                                        <input
-                                            className="line-input"
-                                            placeholder="Senha"
-                                            type="password"
-                                            minLength="8"
-                                            name="password"
-                                            onChange={this.handlerChange}
-                                            required
-                                        />
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <label className="float-left mt-3" htmlFor="exampleInputEmail1">Email</label><br />
+                                            <input
+                                                className="line-input"
+                                                placeholder="Email"
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                onChange={this.handlerChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <label className="float-left mt-3" htmlFor="exampleInputEmail1">Senha</label><br />
+                                            <input
+                                                className="line-input"
+                                                placeholder="Senha"
+                                                type="password"
+                                                minLength="8"
+                                                name="password"
+                                                onChange={this.handlerChange}
+                                                required
+                                            />
+                                        </div>
                                     </div>
                                     <div className="form-group">
                                         <label className="float-left mt-3" htmlFor="exampleInputPassword1">Site</label><br />
@@ -227,7 +247,7 @@ class CadastroEmpresa extends Component {
                                     <div className="form-group">
                                         <label className="float-left mt-3" htmlFor="exampleFormControlTextarea1">Descrição</label><br />
                                         <textarea
-                                            className=""
+                                            className="textarea-resize"
                                             rows="3"
                                             placeholder="Descrição"
                                             type="text"

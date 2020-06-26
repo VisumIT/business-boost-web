@@ -71,3 +71,7 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.textarea-resize{
+    resize: none;
+}
