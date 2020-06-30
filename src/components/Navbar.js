@@ -13,10 +13,7 @@ function Navbar () {
                     <Link class="nav-link active" to="/empresa">Empresa</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link active" to="/representante">Representante</Link>
-                </li>
-                <li class="nav-item">
-                    <Link class="nav-link active" to="/listaderepresentantes">representantelistagem</Link>
+                    <Link class="nav-link active" to="/representante">Representantes</Link>
                 </li>
                 <li class="nav-item">
                     <Link class="nav-link active" to="/orders">Pedidos</Link>

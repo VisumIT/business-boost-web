@@ -2,12 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Empresa from './Empresa';
-import Representante from './Representantes';
-import ListaRepresentante from './ListaRepresentantes';
 import Dashboard from './Dashboard';
 import Navbar from './Navbar';
 import ContainerPedidos from './Pedidos/ContainerPedidos';
-
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
     return(
@@ -28,15 +25,10 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
 function Home() {
     return(
         <>
-            {/* <h1>Criando Menu de navegação</h1> */}
-
             <Router>
                 <Navbar /> 
-
                 <Switch>
-                    {/* <PrivateRoutes path='/empresa' component={Empresa} /> */}
-                    {/* <PrivateRoutes path='/representante' component={BoxPedidos} /> */}
-                    <PrivateRoutes path='/listaderepresentantes' component={ListaRepresentante} />
+                    <PrivateRoutes path='/empresa' component={Empresa} />
                     <PrivateRoutes path='/dashboard' component={Dashboard} />
                     <PrivateRoutes path='/orders' component={ContainerPedidos} />
                 </Switch>
