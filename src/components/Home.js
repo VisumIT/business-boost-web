@@ -6,7 +6,7 @@ import Representante from './Representantes';
 import ListaRepresentante from './ListaRepresentantes';
 import Dashboard from './Dashboard';
 import Navbar from './Navbar';
-import Pedidos from './Pedidos/Pedidos';
+import BoxPedidos from './Pedidos/BoxPedidos';
 
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
@@ -34,11 +34,11 @@ function Home() {
                 <Navbar /> 
 
                 <Switch>
-                    <PrivateRoutes path='/empresa' component={Empresa} />
-                    <PrivateRoutes path='/representante' component={Representante} />
+                    {/* <PrivateRoutes path='/empresa' component={Empresa} /> */}
+                    {/* <PrivateRoutes path='/representante' component={BoxPedidos} /> */}
                     <PrivateRoutes path='/listaderepresentantes' component={ListaRepresentante} />
                     <PrivateRoutes path='/dashboard' component={Dashboard} />
-                    <PrivateRoutes path='/orders' component={Pedidos} />
+                    <PrivateRoutes path='/orders' component={BoxPedidos} />
                 </Switch>
             </Router>
         </>
