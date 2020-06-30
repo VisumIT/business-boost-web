@@ -1,6 +1,5 @@
 import React, {Component, useReducer, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import foto from "./fts/foto.jpg";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
@@ -22,7 +21,7 @@ function Representante () {
         ( state, newState ) => ( {...state, ...newState} ),
         {   
             id: '',
-            foto: "ssssss.jpg",
+            foto: '',
             cpf: '666666',
             name : 'Victor',
             email: '123@g.com',
@@ -77,7 +76,7 @@ function Representante () {
 
             {
                 id: '' ,
-                foto: {foto},
+                foto: '',
                 cpf: '',
                 name : '',
                 email: '',
@@ -279,7 +278,7 @@ function Representante () {
                         <div className="content">
                             <div className="author">
                                 <a href="#universo">
-                                    <img className="rounded-circle avatar border-gray img-fluid rounded" src={foto} alt="..."></img>
+                                    <img className="rounded-circle avatar border-gray img-fluid rounded" src="" alt="..."></img>
                                     <h4 className="title-center text-center badge-primary rounded">
                                         Victor Amaral
                                         <br/>
