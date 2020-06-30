@@ -2,15 +2,9 @@ import React, { useReducer, useState, useEffect } from "react";
 import api from "../../services/api";
 
 import TabelaPedidos from './TabelaPedidos'
-function BoxEmpresa() {
+
+function ContainerPedidos() {
     const [pedidos, setPedidos] = useState([]);
-
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-    // const [show, setShow] = useState(false);
-    // const [pedidoModal, setPedidoModal] = useState('');
-
-    const [count, setCount] = useState(0);
 
     useEffect(() => {
         async function listaPedidos() {
@@ -33,4 +27,4 @@ function BoxEmpresa() {
     )
 }
 
-export default BoxEmpresa;
+export default ContainerPedidos;

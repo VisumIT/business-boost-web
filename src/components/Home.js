@@ -6,7 +6,7 @@ import Representante from './Representantes';
 import ListaRepresentante from './ListaRepresentantes';
 import Dashboard from './Dashboard';
 import Navbar from './Navbar';
-import BoxPedidos from './Pedidos/BoxPedidos';
+import ContainerPedidos from './Pedidos/ContainerPedidos';
 
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
@@ -38,7 +38,7 @@ function Home() {
                     {/* <PrivateRoutes path='/representante' component={BoxPedidos} /> */}
                     <PrivateRoutes path='/listaderepresentantes' component={ListaRepresentante} />
                     <PrivateRoutes path='/dashboard' component={Dashboard} />
-                    <PrivateRoutes path='/orders' component={BoxPedidos} />
+                    <PrivateRoutes path='/orders' component={ContainerPedidos} />
                 </Switch>
             </Router>
         </>
