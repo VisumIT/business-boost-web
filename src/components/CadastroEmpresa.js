@@ -64,16 +64,6 @@ class CadastroEmpresa extends Component {
     }
 
     handlerSubmit = async (event) => {
-        // console.log(this.state)
-        // event.preventDefault()
-        // try{
-        //     Api.post('/companies', this.state).then( () => {
-        //     this.props.history.push('/user/home')
-        //     this.CadastroSucesso()
-        //     })
-        // }catch(erro){
-        //     console.log(erro + "---")
-        // }
         
         event.preventDefault()
 
@@ -98,21 +88,20 @@ class CadastroEmpresa extends Component {
             redirect: 'follow'
         };
 
-
-        const teste = (teste) => {
-            console.log(teste)
-            if(teste.id != null){
+        const verificaErro = (result) => {
+            console.log(result)
+            if(result.id != null){
                 this.props.history.push('/user/home')
                 this.CadastroSucesso()
             }else{
-                this.ErroCadastro(teste)
+                this.ErroCadastro(result)
             }
         }
 
 
         fetch("http://localhost:8080/companies", requestOptions)
             .then(response => response.json())
-            .then(result => teste(result))
+            .then(result => verificaErro(result))
             .catch(error => console.log(error));
             
     }
@@ -146,14 +135,14 @@ class CadastroEmpresa extends Component {
 
                                 </form>
                             </nav>
-                            <div className="row row-logo m-1">
-                                <h2 className="mx-auto">Seja bem vindo ao Bussiness Boost!</h2>
+                            <div className="form-row m-1">
+                                <h2 className="mx-auto col-md-10">Seja bem vindo ao Bussiness Boost!</h2>
+                                <div className="row-logo col-md-2"></div>
                             </div>
                             <div className="row m-5">
-                                <h3 className="mx-auto text-primary">Junte-se a nós e de um boost no seu negócio</h3>
+                                <h3 className="mx-auto text-primary font-weight-bold">Junte-se a nós e de um boost no seu negócio</h3>
                             </div>
                             <div className="row w-75 mx-auto pt-2 pb-2 ">
-
                                 <form className="mx-auto w-100" onSubmit={this.handlerSubmit}>
                                     <div className="form-row">
                                         <div className="form-group col-md-6">
@@ -233,29 +222,7 @@ class CadastroEmpresa extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div className="form-group">
-                                        <label className="float-left mt-3" htmlFor="exampleInputPassword1">Site</label><br />
-                                        <input
-                                            className="line-input"
-                                            placeholder="Site"
-                                            type="text"
-                                            name="site"
-                                            onChange={this.handlerChange}
-                                        />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label className="float-left mt-3" htmlFor="exampleFormControlTextarea1">Descrição</label><br />
-                                        <textarea
-                                            className="textarea-resize"
-                                            rows="3"
-                                            placeholder="Descrição"
-                                            type="text"
-                                            name="description"
-                                            onChange={this.handlerChange}
-                                        ></textarea>
-                                    </div>
-                                    <button type="submit" className="btn btn-primary mb-4">Enviar</button>
+                                    <button type="submit" className="btn btn-primary mb-4">Cadastre</button>
                                 </form>
                                 
                             </div>

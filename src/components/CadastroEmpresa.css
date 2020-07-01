@@ -8,13 +8,12 @@
 }
 
 #inicial {
-    height: 100%;
+    height: 630px;
 }
 
 .row-logo{
-    height: 60px;
-    background-image: url(/imagens/kisspng-logo-clip-art-brand-rocket-design-logo-rocket-favicon-red-smmrocket-5bd5e2b1afa5d5.6747100915407438577195.png);
-    background-size: contain;
+    background-image: url(Empresa/imagens/business.png);
+    background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
 }
@@ -66,7 +65,7 @@
 
 .row-logo-empresa{
     height: 250px;
-    background-image: url(/imagens/logo-original-fundo-claro.png);
+    background-image: url(Empresa/imagens/Capturar23.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
