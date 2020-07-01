@@ -1,26 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import './Navbar.css'
+
 function Navbar () {
 
     return(
         <>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <Link class="nav-link active" to="/dashboard">Dashboard</Link>
+            <ul className="nav flex-column">
+                <li className="nav-item">
+                    <Link className="nav-link active text-dark" to="/user/dashboard">Dashboard</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link active text-dark" to="/user/company">Empresa</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link active" to="/empresa">Empresa</Link>
+                    <Link class="nav-link active" to="/user/representatives">Representantes</Link>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link active" to="/representative">Representantes</Link>
+                    <Link class="nav-link active" to="/user/orders">Pedidos</Link>
                 </li>
-                <li class="nav-item">
-                    <Link class="nav-link active" to="/orders">Pedidos</Link>
+                <li className="nav-item">
+                    <Link className="nav-link active text-dark" to="/user/products">Produtos</Link>
                 </li>
             </ul>
         </>
     )
 }
 
-export default Navbar;
+export default Navbar

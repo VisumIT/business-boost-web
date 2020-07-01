@@ -22,13 +22,13 @@ function Representante () {
         {   
             id: '',
             foto: '',
-            cpf: '666666',
-            name : 'Victor',
-            email: '123@g.com',
-            password: '123',
-            description: 'ssssss',
-            dateOfBirth: '20021112',
-            gender: 'M'
+            cpf: '',
+            name : '',
+            email: '',
+            password: '',
+            description: '',
+            dateOfBirth: '',
+            gender: ''
         
         }
     );

@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from '../components/Login';
+import CadastroEmpresa from '../components/empresa/CadastroEmpresa';
+import Inicial from '../components/Inicial';
 import Home from '../components/Home';
-import Empresa from '../components/Empresa';
-import ContainerPedidos from '../components/Pedidos/ContainerPedidos';
 
 
 const NotFound = () => {
@@ -13,15 +14,15 @@ const NotFound = () => {
     )
 }
 
-
-const Routes = () => {
+function Routes(){
 
     return(
         <Router>
             <Switch>
-                <Route path='/' component={Home} />
-                <Route path='/empresa' component={Empresa} />
-                <Route path='/orders' component={ContainerPedidos}/>
+                <Route path='/users/sign_up' component={CadastroEmpresa} />
+                <Route path='/users/sign_in' component={Login} />
+                <Route path='/user/home' component={Home} />
+                <Route path='/' exact component={Inicial} />
                 <Route component={NotFound} />
             </Switch>
         </Router>
