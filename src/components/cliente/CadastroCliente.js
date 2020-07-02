@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
-import axios from 'axios'
+import api from '../axios/api';
 
 /*
 
@@ -60,7 +60,7 @@ function CadastroCliente () {
         console.log(representanteInput);
         console.log(telefoneInput);
 
-        axios.post('http://localhost:8080/representante', 
+        api.post('', 
                 representanteInput
             )
             .then(function(response) {
@@ -268,47 +268,6 @@ function CadastroCliente () {
                                             </Button>
                                     </Card.Footer>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card card-user">
-                            <div className="image">
-
-                            </div>
-                        </div>
-                        <div className="content">
-                            <div className="author">
-                                <a href="#universo">
-                                    <img className="rounded-circle avatar border-gray img-fluid rounded" src={foto} alt="..."></img>
-                                    <h4 className="title-center text-center badge-primary rounded">
-                                        Victor Amaral
-                                        <br/>
-                                        <small>Victor123</small>
-                                    </h4>
-                                </a>
-                            </div>
-                            <p className="description text-center">
-                                <span>
-                                    ""Lolzera""
-                                    <br/>
-                                    Rito gomes
-                                    <br/>
-                                </span>
-                            </p>
-                        </div>
-                        <hr/>
-                        <div className="text-center">
-                            <div>
-                                <button type="button" className="btn-simple btn btn-default">
-                                    <i className="fa fa-facebook-square"></i>
-                                </button>
-                                <button type="button" className="btn-simple btn btn-default">
-                                    <i className="fa fa-linkedin-square"></i>
-                                </button>
-                                <button type="button" className="btn-simple btn btn-default">
-                                    <i className="fa fa-google-plus-square"></i>
-                                </button>
                             </div>
                         </div>
                     </div>
