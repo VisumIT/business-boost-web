@@ -4,7 +4,8 @@ import Home from '../components/Home';
 import Empresa from '../components/Empresa';
 import Representantes from '../components/Representantes';
 import ListaRepresentantes from '../components/ListaRepresentantes';
-import Pedidos from '../components/Pedidos/Pedidos';
+import Pedidos from '../components/cliente/CadastroCliente';
+import CadastroCliente from '../components/cliente/CadastroCliente';
 
 
 const NotFound = () => {
@@ -26,7 +27,7 @@ const Routes = () => {
                 <Route path='/representantes' component={Representantes} />
                 <Route path='/Editarepresentantes/:id' component={Representantes} />
                 <Route path='/listaderepresentantes' component={ListaRepresentantes} />
-                <Route path='/orders' component={Pedidos}/>
+                <Route path='/client' component={CadastroCliente}/>
                 <Route component={NotFound} />
             </Switch>
         </Router>

@@ -1,7 +1,6 @@
 import React, {Component, useReducer, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import foto from "./fts/foto.jpg";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
@@ -18,7 +17,7 @@ Cadastro dos Clientes
 
 function CadastroCliente () {
     
-    var [ representanteInput, setRepresentanteInput] = useReducer(
+    var [ clienteInput, setClienteInput] = useReducer(
         ( state, newState ) => ( {...state, ...newState} ),
         {   
             name: "teste da silva",
@@ -41,27 +40,27 @@ function CadastroCliente () {
     const handleChange = e => {
         const { name, value } = e.target;
         // console.log(e.target)
-        setRepresentanteInput({[name] : value})
+        setClienteInput({[name] : value})
     }
 
 
     
     const enviaDados = async (e) => {
         e.preventDefault()
-        representanteInput= {
+        clienteInput= {
             telefone: [
                {numero: telefoneInput}
            ],
-           ...representanteInput
+           ...clienteInput
 
       }
    
     
-        console.log(representanteInput);
+        console.log(clienteInput);
         console.log(telefoneInput);
 
-        api.post('', 
-                representanteInput
+        api.post('/companies', 
+                clienteInput
             )
             .then(function(response) {
                 console.log(response);
@@ -74,22 +73,18 @@ function CadastroCliente () {
   
 
     const limpar = () => {
-        setRepresentanteInput(
+        setClienteInput(
 
             {
-                id: '' ,
-                foto: {foto},
-                cpf: '',
-                nome : '',
-                email: '',
-                senha: '',
-                telefone: [
-                    {numero: ''}
-                ],
-                descricao: '',
-                dataNascimento: '',
-                sexo: ''
-                
+                name: [],
+                email: [],
+                address: [],
+                publicPlace: [],
+                number: [],
+                uf: [],
+                neighborhood: [],
+                city:[],
+                cep: []
             }
 
         )     
@@ -106,13 +101,13 @@ function CadastroCliente () {
                     <div className="col-md-8">
                         <div className="card">
                             <div className="header">
-                                <h4 className="title pt-2 ml-3">Cadastro de Representante</h4>
+                                <h4 className="title pt-2 ml-3">Cadastro de Clientes</h4>
                                 <p className="category"></p>
                             </div>
                             <div className="content">
                                 <form method="post" onSubmit={enviaDados}>
                                     <div className="row ml-1">
-                                        <div className="col-md-10">
+                                        <div className="col-md-5">
                                             <div className="form-group">
                                                 <label className="control-label">Nome</label>
                                                 <input 
@@ -120,8 +115,8 @@ function CadastroCliente () {
                                                     placeholder="Nome"  
                                                     type="text" 
                                                     onChange={handleChange}    
-                                                    value={representanteInput.nome}
-                                                    name="nome"
+                                                    value={clienteInput.name}
+                                                    name="name"
                                                     required
                                                     className="form-control">
                                                 </input>
@@ -129,17 +124,17 @@ function CadastroCliente () {
                                         </div>
                                     </div>
                                     <div className="row ml-1">
-                                        <div className="col-md-9">
+                                        <div className="col-md-5">
                                             <div className="form-group">
-                                                <label className="control-label">Descrição</label>
+                                                <label className="control-label">Email</label>
                                                 <input 
                                                     autoComplete="off"
-                                                    placeholder="Descrição"  
-                                                    type="text" className="form-control"
+                                                    placeholder="Email"  
+                                                    type="email" className="form-control"
                                                     onChange={handleChange} 
                                                     required   
-                                                    value={representanteInput.descricao}
-                                                    name="descricao"
+                                                    value={clienteInput.email}
+                                                    name="Email"
                                                     >
 
                                                 </input>
@@ -147,7 +142,7 @@ function CadastroCliente () {
                                         </div>
                                     </div>
                                     <div className="row ml-1">
-                                        <div className="col-md-10">
+                                        <div className="col-md-4">
                                             <div className="form-group">
                                                 <label className="control-label">Telefone</label>
                                                 <InputMask 
@@ -170,37 +165,74 @@ function CadastroCliente () {
                                         </div>
                                     </div>
                                     
-                                    <div className="row ml-1">
+                                    <div className="row-ml-1">
                                         <div className="col-md-5">
                                             <div className="form-group">
-                                                <label className="control-label">Nascimento</label>
+                                                <label className="control-label">Cep</label>
                                                 <InputMask 
                                                     autoComplete="off"
-                                                    placeholder="Data de Nascimento"  
+                                                    placeholder="Cep" 
                                                     type="text" 
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.dataNascimento}
-                                                    name="dataNascimento"
-                                                    mask="9999/99/99"
+                                                    value={clienteInput.cep}
+                                                    name="cep"
+                                                    mask="99999-999"
                                                     >
 
                                                 </InputMask>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div className="row ml-1">
                                         <div className="col-md-5">
                                             <div className="form-group">
-                                                <label className="control-label">Sexo</label>
-                                                <input 
+                                                <label className="control-label">Bairro</label>
+                                                <input
                                                     autoComplete="off"
-                                                    placeholder="sexo" 
+                                                    placeholder="Endereço"  
                                                     type="text" 
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.sexo}
-                                                    name="sexo">
+                                                    value={clienteInput.address}
+                                                    name="address"
+                                                    
+                                                    >
+
+                                                </input>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-4">
+                                            <div className="form-group">
+                                                <label className="control-label">Rua</label>
+                                                <input 
+                                                    autoComplete="off"
+                                                    placeholder="Rua" 
+                                                    type="text" 
+                                                    className="form-control"
+                                                    onChange={handleChange}    
+                                                    required
+                                                    value={clienteInput.publicPlace}
+                                                    name="publicPlace">
+
+                                                </input>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-2">
+                                            <div className="form-group">
+                                                <label className="control-label">N°</label>
+                                                <input 
+                                                    autoComplete="off"
+                                                    placeholder="numero" 
+                                                    type="text" 
+                                                    className="form-control"
+                                                    onChange={handleChange}    
+                                                    required
+                                                    value={clienteInput.number}
+                                                    name="number">
 
                                                 </input>
                                             </div>
@@ -210,23 +242,23 @@ function CadastroCliente () {
                                     <div className="row ml-1">
                                         <div className="col-md-5">
                                             <div className="form-group">
-                                                <label className="control-label">Email</label>
+                                                <label className="control-label">Cidade</label>
                                                 <input 
                                                     autoComplete="off"
-                                                    placeholder="Emai"  
-                                                    type="email" 
+                                                    placeholder="Cidade"  
+                                                    type="text" 
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.email}
-                                                    name="email">
+                                                    value={clienteInput.city}
+                                                    name="city">
 
                                                 </input>
                                             </div>
                                         </div>
-                                        <div className="col-md-5">
+                                        <div className="col-md-4">
                                             <div className="form-group">
-                                                <label className="control-label">Senha</label>
+                                                <label className="control-label">Vizinhança</label>
                                                 <input 
                                                     autoComplete="off"
                                                     placeholder="senha" 
@@ -234,31 +266,31 @@ function CadastroCliente () {
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.senha}
-                                                    name="senha">
+                                                    value={clienteInput.neighborhood}
+                                                    name="neighborhood">
 
                                                 </input>
                                             </div>
                                         </div>
-                                        <div className="col-md-8">
+                                        <div className="col-md-2">
                                             <div className="form-group">
-                                                <label className="control-label">Cpf</label>
-                                                <InputMask 
+                                                <label className="control-label">Estado</label>
+                                                <input 
                                                     autoComplete="off"
-                                                    placeholder="Cpf" 
+                                                    placeholder="Estado" 
                                                     type="text" 
                                                     className="form-control"
                                                     onChange={handleChange}    
                                                     required
-                                                    value={representanteInput.cpf}
-                                                    name="cpf"
-                                                    mask="999.999.999-99"
-                                                    >
+                                                    value={clienteInput.uf}
+                                                    name="uf">
 
-                                                </InputMask>
+                                                </input>
                                             </div>
                                         </div>
+                                        
                                     </div>
+                                    
                                     <Card.Footer style={{"textAlign":"right"}}>
                                             <Button size="sm" variant="success" type="submit">
                                                     <FontAwesomeIcon icon={faSave}/> Cadastrar
