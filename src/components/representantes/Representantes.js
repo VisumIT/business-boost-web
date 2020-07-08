@@ -1,6 +1,6 @@
 import React, {Component, useReducer, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import foto from "./fts/foto.jpg";
+// import foto from "./fts/foto.jpg";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
@@ -21,8 +21,7 @@ function Representante () {
     var [ representanteInput, setRepresentanteInput] = useReducer(
         ( state, newState ) => ( {...state, ...newState} ),
         {   
-            id: '',
-            foto: "ssssss.jpg",
+            
             cpf: '666666',
             name : 'Victor',
             email: '123@g.com',
@@ -41,6 +40,8 @@ function Representante () {
         const { name, value } = e.target;
         // console.log(e.target)
         setRepresentanteInput({[name] : value})
+
+        console.log(representanteInput)
     }
 
 
@@ -48,8 +49,8 @@ function Representante () {
     const enviaDados = async (e) => {
         e.preventDefault()
         representanteInput= {
-            telefone: [
-               {numero: telefoneInput}
+            phones: [
+               {number: telefoneInput}
            ],
            ...representanteInput
 
@@ -77,7 +78,7 @@ function Representante () {
 
             {
                 id: '' ,
-                foto: {foto},
+                // foto: {foto},
                 cpf: '',
                 name : '',
                 email: '',
@@ -120,7 +121,7 @@ function Representante () {
                                                     type="text" 
                                                     onChange={handleChange}    
                                                     value={representanteInput.name}
-                                                    name="nome"
+                                                    name="name"
                                                     required
                                                     className="form-control">
                                                 </input>
@@ -138,7 +139,7 @@ function Representante () {
                                                     onChange={handleChange} 
                                                     required   
                                                     value={representanteInput.description}
-                                                    name="descricao"
+                                                    name="description"
                                                     >
 
                                                 </input>
@@ -158,7 +159,7 @@ function Representante () {
                                                        
                                                     required
                                                     value={telefoneInput}
-                                                    name="numero"
+                                                    name="phones"
                                                     
                                                     mask="+5\5 99999-9999"
                                                     >
@@ -181,7 +182,7 @@ function Representante () {
                                                     onChange={handleChange}    
                                                     required
                                                     value={representanteInput.dateOfBirth}
-                                                    name="dataNascimento"
+                                                    name="dateOfBirth"
                                                     mask="9999/99/99"
                                                     >
 
@@ -199,7 +200,7 @@ function Representante () {
                                                     onChange={handleChange}    
                                                     required
                                                     value={representanteInput.gender}
-                                                    name="sexo">
+                                                    name="gender">
 
                                                 </input>
                                             </div>
@@ -234,7 +235,7 @@ function Representante () {
                                                     onChange={handleChange}    
                                                     required
                                                     value={representanteInput.password}
-                                                    name="senha">
+                                                    name="password">
 
                                                 </input>
                                             </div>
@@ -279,7 +280,7 @@ function Representante () {
                         <div className="content">
                             <div className="author">
                                 <a href="#universo">
-                                    <img className="rounded-circle avatar border-gray img-fluid rounded" src={foto} alt="..."></img>
+                                    <img className="rounded-circle avatar border-gray img-fluid rounded"  alt="..."></img>
                                     <h4 className="title-center text-center badge-primary rounded">
                                         Victor Amaral
                                         <br/>
