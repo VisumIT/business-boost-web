@@ -59,7 +59,7 @@ function CadastroCliente () {
         console.log(clienteInput);
         console.log(telefoneInput);
 
-        api.post('/companies', 
+        api.post('/companies/id/new-client', 
                 clienteInput
             )
             .then(function(response) {
