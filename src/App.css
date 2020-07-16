@@ -5,3 +5,8 @@
 textarea{
     resize: none;
 }
+
+.td-produtos{
+    max-width: 150px;
+    text-align: center;
+}

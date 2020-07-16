@@ -14,14 +14,17 @@ function Navbar () {
                 <li className="nav-item">
                     <Link className="nav-link active text-dark" to="/user/company">Empresa</Link>
                 </li>
-                <li class="nav-item">
-                    <Link class="nav-link active" to="/user/representatives">Representantes</Link>
+                <li className="nav-item">
+                    <Link className="nav-link active text-dark" to="/user/representatives">Representantes</Link>
                 </li>
-                <li class="nav-item">
-                    <Link class="nav-link active" to="/user/orders">Pedidos</Link>
+                <li className="nav-item">
+                    <Link className="nav-link active text-dark" to="/user/orders">Pedidos</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link active text-dark" to="/user/products">Produtos</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link active text-dark" to="/user/CadastroProducts">Cadastrar Produtos</Link>
                 </li>
             </ul>
         </>

@@ -126,10 +126,10 @@ class CadastroEmpresa extends Component {
                                 <a className="navbar-brand"></a>
                                 <form className="form-inline">
                                     <button className="btn btn-outline-success my-2 mr-2 my-sm-0" type="submit">
-                                        <a href="login">Login</a>
+                                        <a href="sign_in">Login</a>
                                     </button>
                                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                        <a href="login">Cadastre-se</a>
+                                        <a href="sign_up">Cadastre-se</a>
                                     </button>
 
                                 </form>

@@ -44,24 +44,6 @@ function CardEmpresa({ companies, refresh }) {
             <i className="fa fa-trash" role="button" aria-hidden="true" onClick={deleteConfirm}/>
             <br />
         </div>
-        // <table class="table table-striped">
-        //     <thead>
-        //         <tr>
-        //         <th scope="col">Nome Fantasia</th>
-        //         <th scope="col">Razão Social</th>
-        //         <th scope="col">Email</th>
-        //         <th scope="col">Descrição</th>
-        //         </tr>
-        //     </thead>
-        //     <tbody>
-        //         <tr>
-        //         <th scope="row">{empresa.nomeFantasia}</th>
-        //         <td>{empresa.razaoSocial}</td>
-        //         <td>{empresa.email}</td>
-        //         <td>{empresa.descricao}</td>
-        //         </tr>
-        //     </tbody>
-        // </table>
     )
 }
 

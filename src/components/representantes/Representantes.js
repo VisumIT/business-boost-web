@@ -1,8 +1,8 @@
-import React, {Component, useReducer, useState} from 'react'
+import React, {useReducer, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
-import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
+import {faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
+import {Button, Card} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
 import axios from 'axios'
 
@@ -159,7 +159,7 @@ function Representante () {
                                                     value={telefoneInput}
                                                     name="numero"
                                                     
-                                                    mask="+5\5 99999-9999"
+                                                    mask="+55 99999-9999"
                                                     >
 
                                                 </InputMask>
