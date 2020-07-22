@@ -1,3 +1,4 @@
+import PubSub from 'pubsub-js'
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Api from '../../axios/api';
@@ -46,27 +47,20 @@ function CardProduto({ products, refresh }) {
                     <Link to={"/user/product/" + products.id + "/image"}>
                         <i className="fa fa-image mr-2" aria-hidden="true" />
                     </Link>
+                    <button
+                        className="btn btn-info ml--2"
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        onClick={
+                            () => {
+                                PubSub.publish('produtoDetalhe', products)
+                            }
+                        } >
+                        Info</button>
                 </td>
             </tr>
         </>
-
-
-
-        // <tbody data-aura-rendered-by="284:0">
-        //     <tr data-aura-rendered-by="437:0">
-        //         <td data-aura-rendered-by="438:0">{products.name}</td>
-        //         <td data-aura-rendered-by="440:0">{products.brand}</td>
-        //         <td data-aura-rendered-by="442:0">{products.category}</td>
-        //         <td data-aura-rendered-by="444:0">R${products.price}</td>
-        //         <td data-aura-rendered-by="448:0">{products.discount}%</td>
-        //         <td data-aura-rendered-by="448:0">
-        //             <Link to={"/user/editproducts/" + products.id}>
-        //                 <i className="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>
-        //             </Link>
-        //             <i className="fa fa-trash mr-2" role="button" aria-hidden="true" onClick={deleteConfirm} />
-        //         </td>
-        //     </tr>
-        // </tbody>
 
     )
 }
