@@ -27,13 +27,16 @@ const useLogin = () => {
         });
     }
 
+    
+
     function onSubmit(event) {
         event.preventDefault();
         api.post('/login',
             values
         )
         .then(function (response) {
-            console.log(response)
+            console.log(response.headers)
+            // setToken(token)
             history.push('/user/home')
         })
         .catch(function (error) {
