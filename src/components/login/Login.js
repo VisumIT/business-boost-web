@@ -34,9 +34,9 @@ const useLogin = () => {
         api.post('/login',
             values
         )
-        .then(function (response) {
-            console.log(response.headers)
-            // setToken(token)
+        .then(function (res) {
+            console.log(res.data.token)
+            setToken(res.data.token)
             history.push('/user/home')
         })
         .catch(function (error) {
