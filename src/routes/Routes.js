@@ -15,6 +15,8 @@ import ContainerPedidos from '../components/pedidos/ContainerPedidos';
 
 import { isSignedIn } from '../services/auth-service';
 
+import './Routes.css';
+
 const NotFound = () => {
     return (
         <div>
@@ -30,17 +32,23 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
             {...rest}
             render={props =>
                 isSignedIn() ? (
-                    <div className="container-fluid wrapper bg-light">
-                        <div className="row wrapper">
-                            <div className="col-2 col-md-2 sidebar text-center">
-                                <Navbar />
-                            </div>
-                            <div className="col-10 col-md-10 p-0">
-                                <Component {...props} />
+                    <div className="body">
+                        <div className="page-content">
+                            <div class="row">
+                                <div className="col-md-2">
+                                    <div class="sidebar content-box" style={{ "display": "block;" }}>
+                                        <Navbar />
+                                    </div>
+                                </div>
+                                <div className="col-md-10">
+                                    <div className="row">
+                                        <Component {...props} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
+
                 ) : (
                         <Redirect to={{ pathname: '/users/sign_in', state: { from: props.location } }} />
                     )
