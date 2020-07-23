@@ -14,7 +14,7 @@ function Inicial() {
             <p>
                 '/users/sign_up' component="CadastroEmpresa" -> cadastrar a empresa <br />
                 '/users/sign_in' component="Login"  <br />
-                '/user/home' component="Home" -> esse componente é chado assim que faz o login no sistema <br />
+                '/user/dashboard' component="Home" -> esse componente é chado assim que faz o login no sistema <br />
                 '/' component="Inicial" -> apresentar o produto <br />
             </p>
         </div>

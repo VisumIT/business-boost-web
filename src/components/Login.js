@@ -30,7 +30,7 @@ function Login() {
             if (res.status === 403 || res.status === 400) {
                 setError("Email ou senha invalidos!")
             } else {
-                history.push('/user/home')
+                history.push('/user/dashboard')
             }
 
         } catch (error) {
