@@ -33,8 +33,8 @@ const PrivateRoutes = ({component: Component, ...rest}) => {
 function Home() {
     return(
         <div className="container-fluid wrapper bg-light">
-
-            <div className="row wrapper">
+            teste
+            {/* <div className="row wrapper">
                 <Router>
                     <div className="col-2 col-md-2 sidebar text-center">
                         <Navbar /> 
@@ -53,7 +53,7 @@ function Home() {
                     </div>
                     
                 </Router>
-            </div>
+            </div> */}
 
         </div>
     )

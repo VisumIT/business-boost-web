@@ -47,7 +47,7 @@ function Login() {
                     <form className="form-signin" method="get" onSubmit={singIn}>
                         <img className="mb-4 " src="/imagens/business.png" alt="Bussiness Boost" />
                         <h1 className="h3 mb-3 font-weight-normal">
-                            Please sign in
+                            Acessar Como Empresa
                             </h1>
                         <MsgError msgError={error} />
 

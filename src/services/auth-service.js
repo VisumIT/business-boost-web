@@ -16,7 +16,7 @@ export const signIn = async (acesso) => {
             try {
                 const response = await api.get("/companies/whois", { headers: { Authorization: token } })
                 var comp = response.data
-                delete company.password
+                delete comp.password
                 localStorage.setItem(COMPANY, JSON.stringify(comp))
             } catch (error) {
                 console.log(error)
