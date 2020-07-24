@@ -10,3 +10,7 @@ textarea{
     max-width: 150px;
     text-align: center;
 }
+
+.img-tamanho{
+    height: 250px;
+}

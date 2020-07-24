@@ -60,19 +60,46 @@ class Produto extends Component {
 
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     {console.log(this.state.detalhesProduct)}
-                    <div className="modal-dialog" role="document">
+                    <div className="modal-dialog" role="document" style={{width: 25 + 'rem'}}>
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">{}</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">{this.state.detalhesProduct.name}</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                {}
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <div className='card'>
+                                <img src={this.state.detalhesProduct.imagesUrl} className="card-img-top img-tamanho" alt="..."></img>
+                                <div class="card-body">
+                                    <p><strong className="h5">Categoria:</strong> {this.state.detalhesProduct.category} </p>
+                                    <p><strong className="h5">Tipo de entrega:</strong> {this.state.detalhesProduct.deliveryTime} </p>
+                                    <p><strong className="h5">Status:</strong> {this.state.detalhesProduct.status} </p>
+                                    <p><strong className="h5">Preço normal:</strong> {this.state.detalhesProduct.price} </p>
+                                    <p><strong className="h5">Desconto:</strong> {this.state.detalhesProduct.discount}% </p>
+                                    <p><strong className="h5">Preço Total:</strong> {this.state.detalhesProduct.totalPrice} </p>
+                                    
+                                </div>
+                                </div>
+
+
+                                {/* <div class="card mb-3">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <img src={this.state.detalhesProduct.imagesUrl} class="card-img h-100" alt="..."></img>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> */}
+
+
+
                             </div>
                         </div>
                     </div>
