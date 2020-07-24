@@ -38,11 +38,16 @@ export const isSignedIn = () => {
 }
 
 export const getToken = () => {
-    const usuario = JSON.parse(localStorage.getItem(TOKEN_KEY));
-    return usuario.token;
+    return JSON.parse(localStorage.getItem(TOKEN_KEY));
 }
 
 export const getCompany = () => {
     const company = JSON.parse(localStorage.getItem(COMPANY));
-    return company.company;
+    delete company.password
+    return company;
+}
+
+export const getCompanyId = () => {
+    const company = JSON.parse(localStorage.getItem(COMPANY));
+    return company.id;
 }

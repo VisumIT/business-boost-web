@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link, useHistory } from 'react-
 import "./login.css"
 import logo from '../img/business.png'
 import Home from '../Home';
-import api from '../../services/api'
+import api from '../../axios/api'
 import StoreContext from '../Store/Context'
 // Layout da tela de Login
 
