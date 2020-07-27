@@ -1,12 +1,14 @@
 import React, {Component} from 'react'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Table, Image, ButtonGroup, Button} from 'react-bootstrap'
-import foto from "./fts/foto.jpg";
+
 import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faList, faEdit, faTrash} from '@fortawesome/free-solid-svg-icons'
 import api from '../../axios/api'
 import { Link, Redirect } from 'react-router-dom'
+import { getToken, getCompanyId } from '../../services/auth-service';
+
 
 
 
@@ -33,12 +35,21 @@ export default class ListaRepresentante extends Component {
     }
 
     mostrarRepresentantes() {
-        api.get('/representatives')
+        const url = '/companies/'+getCompanyId()+'/representatives'
+        api.get(url, {header: { Authorization: getToken()}})
         .then(response => {
             this.setState({
                 representantes: response.data
+                
             })
         })
+        // api.get('/companies/1/representatives')
+        // .then(response => {
+        //     this.setState({
+        //         representantes: response.data
+                
+        //     })
+        // })
         
         // axios.get(api)
         //     .then(response => response.data)
@@ -65,7 +76,12 @@ render() {
 
 
     return(
-        <Table bordered hover striped variant="dark">
+    <div className="container">
+        <Link to="/user/sign_up_representatives">
+            <Button variant="outline-dark">Cadastrar representante</Button>
+        </Link>
+        <Table bordered hover striped variant="light">
+            
             <thead>
                 <tr>
                 <th>Nome</th>
@@ -84,7 +100,7 @@ render() {
                     this.state.representantes.map((representantes) =>(
                        <tr key={representantes.id}>
                            <td>
-                                <Image  src={foto} roundedCircle width="25" height="25"/>
+                                <Image roundedCircle width="25" height="25"/>
                                 {representantes.name}
                            </td>
                            <td>
@@ -102,13 +118,15 @@ render() {
                                     <Button size="sm" variant="outline-danger" onClick={( ) => {this.deletar(representantes.id)}}><FontAwesomeIcon icon={faTrash}/></Button>{' '}                                  
                                 </ButtonGroup>
                            </td>
-                       </tr> 
+                          
+                       </tr>
                     ))
                 }
                 
 
             </tbody>
         </Table>
+    </div>
     )
 
 
