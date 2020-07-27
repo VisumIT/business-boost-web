@@ -3,6 +3,8 @@ import InputMask from 'react-input-mask'
 
 import { confirmAlert } from 'react-confirm-alert'
 
+import {signIn} from '../../services/auth-service' 
+
 import './CadastroEmpresa.css'
 
 class CadastroEmpresa extends Component {
@@ -87,18 +89,33 @@ class CadastroEmpresa extends Component {
             redirect: 'follow'
         };
 
-        const verificaErro = (result) => {
-            console.log(result)
+        const verificaErro = async (result) => {
+
             if(result.id != null){
-                this.props.history.push('/user/home')
-                this.CadastroSucesso()
+
+                try {
+                    const { email } = result
+                    const password = this.state.password
+                    const res = await signIn({ email, password })
+                    if (res.status === 403 || res.status === 400) {
+                        this.ErroCadastro(result)
+                    } else {
+                        this.props.history.push('/user/dashboard')
+                        this.CadastroSucesso()
+                    }
+
+                } catch (error) {
+                    console.log(error)
+                }
+
+                
             }else{
                 this.ErroCadastro(result)
             }
         }
 
-
-        fetch("http://localhost:8080/companies", requestOptions)
+        // Cadastrar a empresa e ja logar no sistema 
+        fetch("http://52.3.253.2:8080/companies", requestOptions)
             .then(response => response.json())
             .then(result => verificaErro(result))
             .catch(error => console.log(error));

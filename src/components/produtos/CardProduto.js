@@ -3,13 +3,15 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Api from '../../axios/api';
 
+import { getCompanyId } from '../../services/auth-service'
+
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 function CardProduto({ products, refresh }) {
 
     async function deleteProduto() {
-        await Api.delete('/company/15/products/' + products.id)
+        await Api.delete(`/company/${getCompanyId()}/products/` + products.id)
 
         return refresh()
     }
@@ -44,7 +46,7 @@ function CardProduto({ products, refresh }) {
                         <i className="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>
                     </Link>
                     <i className="fa fa-trash mr-2" role="button" aria-hidden="true" onClick={deleteConfirm} />
-                    <Link to={"/user/product/" + products.id + "/image"}>
+                    <Link to={"/user/imageProduct/" + products.id}>
                         <i className="fa fa-image mr-2" aria-hidden="true" />
                     </Link>
                     <button

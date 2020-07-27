@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Api from '../../axios/api'
 
+import { getCompanyId } from '../../services/auth-service'
+
 class CadastroImagem extends Component {
 
     state = {
@@ -35,7 +37,7 @@ class CadastroImagem extends Component {
         const dados = this.state
         delete dados.imagePreview
         const id = this.props.match.params.id
-        await Api.post('/company/15/products/' + id + "/upload", dados)
+        await Api.post(`/company/${getCompanyId()}/products/` + id + "/upload", dados)
         this.props.history.push('/user/products')
     }
 

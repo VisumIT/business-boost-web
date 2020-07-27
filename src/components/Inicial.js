@@ -42,7 +42,7 @@ function Inicial() {
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src={imagem} class="rounded-circle" width="350" height="300"></img>
+                                <img src={imagem} class="rounded-circle" width="350" height="350"></img>
                             </div>
                             <div class="col-lg-6 mt-5">
                                 <h3>A VisumIt é uma empresa focada em tecnologia, visando revolucionar o mercado com nossos sistemas. <br /> A VisumIt foi fundada em 2020 com a intenção de fazer da sua visão o nosso negocio</h3>

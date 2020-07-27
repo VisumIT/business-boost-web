@@ -12,6 +12,7 @@ import EditEmpresa from '../components/empresa/EditEmpresa'
 import Representantes from '../components/representantes/Representantes';
 import Products from '../components/produtos/Produtos';
 import CadastroProduto from '../components/produtos/CadastroProduto'
+import ImagemProduto from '../components/produtos/CadastroImagem'
 import ContainerPedidos from '../components/pedidos/ContainerPedidos';
 
 import { isSignedIn } from '../services/auth-service';
@@ -73,6 +74,7 @@ function Routes() {
                 <PrivateRoutes path='/user/products' component={Products} />
                 <PrivateRoutes path='/user/orders' component={ContainerPedidos} />
                 <PrivateRoutes path='/user/newProduct' component={CadastroProduto} />
+                <PrivateRoutes path='/user/imageProduct/:id' component={ImagemProduto} />
                 <Route component={NotFound} />
             </Switch>
         </Router>
