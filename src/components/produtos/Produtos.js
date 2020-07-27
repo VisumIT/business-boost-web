@@ -2,6 +2,8 @@ import PubSub from 'pubsub-js'
 import React, { Component } from 'react';
 import CardProduto from './CardProduto';
 import Api from '../../axios/api';
+import { Link } from 'react-router-dom';
+import { getCompanyId } from '../../services/auth-service'
 
 class Produto extends Component {
 
@@ -11,7 +13,7 @@ class Produto extends Component {
     }
 
     componentDidMount = async () => {
-        await Api.get("/company/15/products")
+        await Api.get(`/company/${getCompanyId()}/products`)
             .then(response => this.setState({
                 products: response.data
             }))
@@ -40,6 +42,7 @@ class Produto extends Component {
                 <div className="card">
                     <div className="card-header">
                         <h5>Lista de Produtos</h5>
+                        <Link className=" " to="/user/newProduct"> <h6>Cadastrar Produto</h6> </Link>
                     </div>
                     <table className="table table-striped">
                         <thead>

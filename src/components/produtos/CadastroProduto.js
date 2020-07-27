@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { confirmAlert } from 'react-confirm-alert'
 
+import { getCompanyId } from '../../services/auth-service'
 
 class CadastroProduto extends Component {
 
@@ -95,7 +96,7 @@ class CadastroProduto extends Component {
         }
 
 
-        fetch("http://localhost:8080/company/15/products", requestOptions)
+        fetch(`http://52.3.253.2:8080/company/${getCompanyId()}/products`, requestOptions)
             .then(response => response.json())
             .then(result => verificaErro(result))
             .catch(error => console.log(error));
