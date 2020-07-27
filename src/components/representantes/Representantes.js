@@ -6,6 +6,7 @@ import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-s
 import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
 import axios from 'axios'
+import api from '../../axios/api';
 
 /*
 
@@ -60,7 +61,7 @@ function Representante () {
         console.log(representanteInput);
         console.log(telefoneInput);
 
-        axios.post('http://localhost:8080/representatives', 
+        api.post('/representatives', 
                 representanteInput
             )
             .then(function(response) {
