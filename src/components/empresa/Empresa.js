@@ -7,17 +7,23 @@ class Empresa extends Component {
     state={
         companies:[]
     }
+    
 
     componentDidMount = async () => {
-        await Api.get("/companies")
-            .then(response=>this.setState({
-                companies:response.data
-            }))
+        // await Api.get("/companies",{
+        //     headers: {
+        //         authorizantion: 'Bearer'
+        //     }
+        // })
+        //     .then(response=>this.setState({
+        //         companies:response.data
+        //     }))
             console.log(this.state);
     }
 
     render(){
 
+        console.log(this.state)
         const renderData = this.state.companies.map(companies=>{
             return(
                 <CardEmpresa companies={companies} key={companies.id} refresh={this.componentDidMount}/>
