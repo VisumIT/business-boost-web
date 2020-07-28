@@ -60,7 +60,7 @@ export default class ListaRepresentante extends Component {
 
 
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhMUBnbWFpbC5jb20iLCJleHAiOjE1OTU4OTcyNjl9.ewef1hPvjxz4NXwOrvYEMMeUSeIEBAcE68_c4tVMLEbO6qEBX-vk6u9MO9IjZtOC7kmS5jCbLSLzmYnX2eAyrA");
+        myHeaders.append("Authorization", getToken());
 
         var requestOptions = {
             method: 'GET',
@@ -69,8 +69,8 @@ export default class ListaRepresentante extends Component {
         };
 
         fetch("http://52.3.253.2:8080/companies/"+getCompanyId()+"/representatives", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => response.json())
+            .then(result => this.setState(result))
             .catch(error => console.log('error', error));
 
     }
@@ -90,6 +90,7 @@ export default class ListaRepresentante extends Component {
 
     render() {
 
+        console.log(this.state)
 
         return (
             <div className="container">
