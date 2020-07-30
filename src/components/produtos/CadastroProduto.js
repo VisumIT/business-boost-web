@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { confirmAlert } from 'react-confirm-alert'
 
-import { getCompanyId } from '../../services/auth-service'
+import { getCompanyId, getToken } from '../../services/auth-service'
 
 class CadastroProduto extends Component {
 
@@ -14,7 +14,7 @@ class CadastroProduto extends Component {
         category: '',
         reference: '',
         deliveryTime: '',
-        status: 'active',
+        status: '',
         imagesUrl: "https://storage.googleapis.com/teste-ds3-77189.appspot.com/Teste.png"
     }
 
@@ -65,6 +65,7 @@ class CadastroProduto extends Component {
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", getToken());
 
         var raw = JSON.stringify({
             "name": this.state.name,
@@ -109,77 +110,81 @@ class CadastroProduto extends Component {
                 <div className="row h-100 text-center">
                     <h1 className="mx-auto">Cadastro de Produto</h1>
                     <form className="w-100 mt-3" onSubmit={this.handlerSubmit}>
-                            <div className="form-group ml-4 mr-4">
-                                <label className="float-left" htmlFor="exampleInputEmail1">Nome do produto</label>
-                                <input
-                                    className="form-control"
-                                    placeholder="Nome do produto"
-                                    type="text"
-                                    name="name"
-                                    onChange={this.handlerChange}
-                                />
-                            </div>
-                            <div className="form-group ml-4 mr-4">
-                                <label className="float-left" htmlFor="exampleInputEmail1">Preço</label>
-                                <input
-                                    className="form-control"
-                                    placeholder="Preço"
-                                    type="number"
-                                    name="price"
-                                    onChange={this.handlerChange}
-                                />
-                            </div>
-                            <div className="form-group ml-4 mr-4">
-                                <label className="float-left" htmlFor="exampleInputEmail1">Desconto</label>
-                                <input
-                                    className="form-control"
-                                    placeholder="discount"
-                                    type="number"
-                                    name="discount"
-                                    onChange={this.handlerChange}
-                                />
-                            </div>
-                            <div className="form-group ml-4 mr-4">
-                                <label className="float-left" htmlFor="exampleInputEmail1">Marca</label>
-                                <input
-                                    className="form-control"
-                                    placeholder="Marca"
-                                    type="text"
-                                    name="brand"
-                                    onChange={this.handlerChange}
-                                />
-                            </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">Nome do produto</label>
+                            <input
+                                className="form-control"
+                                placeholder="Nome do produto"
+                                type="text"
+                                name="name"
+                                onChange={this.handlerChange}
+                            />
+                        </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">Preço</label>
+                            <input
+                                className="form-control"
+                                placeholder="Preço"
+                                type="number"
+                                name="price"
+                                onChange={this.handlerChange}
+                            />
+                        </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">Desconto</label>
+                            <input
+                                className="form-control"
+                                placeholder="discount"
+                                type="number"
+                                name="discount"
+                                onChange={this.handlerChange}
+                            />
+                        </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">Marca</label>
+                            <input
+                                className="form-control"
+                                placeholder="Marca"
+                                type="text"
+                                name="brand"
+                                onChange={this.handlerChange}
+                            />
+                        </div>
 
-                            <div className="form-group ml-4 mr-4">
-                                <label className="float-left" htmlFor="exampleInputEmail1">Categoria</label>
-                                <input
-                                    className="form-control"
-                                    placeholder="category"
-                                    type="text"
-                                    name="category"
-                                    onChange={this.handlerChange}
-                                />
-                            </div>
-                            <div className="form-group ml-4 mr-4">
-                                <label className="float-left" htmlFor="exampleInputEmail1">referencia</label>
-                                <input
-                                    className="form-control"
-                                    placeholder="reference"
-                                    type="text"
-                                    name="reference"
-                                    onChange={this.handlerChange}
-                                />
-                            </div>
-                            <div className="form-group ml-4 mr-4">
-                                <label className="float-left" htmlFor="exampleInputEmail1">deliveryTime</label>
-                                <input
-                                    className="form-control"
-                                    placeholder="deliveryTime"
-                                    type="text"
-                                    name="deliveryTime"
-                                    onChange={this.handlerChange}
-                                />
-                            </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">Categoria</label>
+                            <input
+                                className="form-control"
+                                placeholder="category"
+                                type="text"
+                                name="category"
+                                onChange={this.handlerChange}
+                            />
+                        </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">referencia</label>
+                            <input
+                                className="form-control"
+                                placeholder="reference"
+                                type="text"
+                                name="reference"
+                                onChange={this.handlerChange}
+                            />
+                        </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">deliveryTime</label>
+                            <select class="custom-select" name="deliveryTime" onChange={this.handlerChange}>
+                                <option value="mensal">mensal</option>
+                                <option value="diaria">diaria</option>
+                            </select>
+                        </div>
+                        <div className="form-group ml-4 mr-4">
+                            <label className="float-left" htmlFor="exampleInputEmail1">Status</label>
+                            <select class="custom-select" name="status" onChange={this.handlerChange}>
+                                <option value="active">ativo</option>
+                                <option value="disable">desativo</option>
+                            </select>
+                        </div>
                         <button type="submit" className="btn btn-primary mb-4">Cadastre</button>
                     </form>
                 </div>

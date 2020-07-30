@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Api from '../../axios/api'
 
+import { getCompanyId } from '../../services/auth-service'
+
 class EditProduto extends Component {
 
     state = {
@@ -12,7 +14,7 @@ class EditProduto extends Component {
         category: '',
         reference: '',
         deliveryTime: '',
-        status: true
+        status: '',
     }
 
     componentDidMount = async () => {
@@ -37,7 +39,7 @@ class EditProduto extends Component {
 
     handlerSubmit = async (event) => {
         event.preventDefault()
-        await Api.put('/company/15/products', this.state)
+        await Api.put(`/company/${getCompanyId()}/products`, this.state)
         this.props.history.push('/user/products')
     }
 

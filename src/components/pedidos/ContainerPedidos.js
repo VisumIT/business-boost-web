@@ -17,7 +17,7 @@ function ContainerPedidos() {
     }, []);
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <TabelaPedidos pedidos={pedidos} />
         </div>
     )

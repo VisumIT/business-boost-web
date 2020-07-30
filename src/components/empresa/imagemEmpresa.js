@@ -36,9 +36,8 @@ class CadastroImagem extends Component {
         e.preventDefault()
         const dados = this.state
         delete dados.imagePreview
-        const id = this.props.match.params.id
-        await Api.post(`/company/${getCompanyId()}/products/` + id + "/upload", dados)
-        this.props.history.push('/user/products')
+        await Api.patch(`/companies/${getCompanyId()}/logo`, dados)
+        this.props.history.push('/user/company')
     }
 
     render() {
@@ -47,25 +46,32 @@ class CadastroImagem extends Component {
         let $imagePreview = null;
         if (imagePreview !== '') {
             $imagePreview = (
-                <div className="container" style={{height: 250, width: 250}}>
-                    <img className="border rounded mx-auto" style={{height: 250, width: 250}} src={imagePreview} alt={"Pre-visualizacao"} />
+                <div className="container" style={{ height: 250, width: 250 }}>
+                    <img className="border rounded mx-auto" style={{ height: 250, width: 250 }} src={imagePreview} alt={"Pre-visualizacao"} />
                 </div>);
         } else {
-            $imagePreview = (<div className="container border" style={{height: 250, width: 280}}></div>);
+            $imagePreview = (<div className="container border" style={{ height: 250, width: 280 }}></div>);
         }
 
         return (
             <div className="container">
                 <h1 className="mx-auto">Cadastro de Imagens</h1><br />
-                <input
-                    type="file"
-                    placeholder="Escolher foto"
-                    accept="image/png, image/jpeg"
-                    onChange={(e) => this._handleImageChange(e)} />
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input 
+                        type="file" 
+                        class="custom-file-input" 
+                        id="inputGroupFile01" 
+                        aria-describedby="inputGroupFileAddon01"
+                        accept="image/png, image/jpeg"
+                        onChange={(e) => this._handleImageChange(e)} />
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
 
                 {$imagePreview}
 
-                <button className="mt-2" onClick={this.enviaDados}>Upload</button>
+                <button className="btn btn-dark mt-2" onClick={this.enviaDados}>Upload</button>
             </div>
         )
     }

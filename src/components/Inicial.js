@@ -28,10 +28,10 @@ function Inicial() {
                         </li>
                     </ul>
                 </div>
-                <button className="btn btn-outline-success my-2 mr-2 my-sm-0" type="submit">
+                <button className="btn btn-light border border-dark mr-2" type="submit">
                     <a href="users/sign_in">Login</a>
                 </button>
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <button className="btn btn-light border border-dark" type="submit">
                     <a href="users/sign_up">Cadastre-se</a>
                 </button>
             </nav>
