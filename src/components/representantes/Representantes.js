@@ -1,12 +1,14 @@
-import React, {Component, useReducer, useState} from 'react'
+import React, { Component, useReducer, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import moment from 'moment';
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faList, faEdit, faTrash, faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
-import {Table, Image, ButtonGroup, Button, Card} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faList, faEdit, faTrash, faSave, faUndo } from '@fortawesome/free-solid-svg-icons'
+import { Table, Image, ButtonGroup, Button, Card } from 'react-bootstrap'
 import InputMask from 'react-input-mask';
 import axios from 'axios'
 import api from '../../axios/api';
+import { getToken, getCompanyId } from '../../services/auth-service';
 
 /*
 
@@ -17,89 +19,91 @@ Cadastro dos representantes
 
 
 
-function Representante () {
-    
-    var [ representanteInput, setRepresentanteInput] = useReducer(
-        ( state, newState ) => ( {...state, ...newState} ),
-        {   
-            
-            cpf: '666666',
-            name : 'Victor',
-            email: '123@g.com',
-            password: '123',
-            description: 'ssssss',
-            dateOfBirth: '20021112',
-            gender: 'M'
-        
+function Representante() {
+
+    var [representanteInput, setRepresentanteInput] = useReducer(
+        (state, newState) => ({ ...state, ...newState }),
+        {
+            id: '',
+            cpf: '',
+            name: '',
+            email: '',
+            password: '',
+            description: '',
+            dateOfBirth: '',
+            gender: ''
+
         }
     );
 
-   
-    var [telefoneInput, setTelefoneInput] = useState( '5555555')
+
+    var [telefoneInput, setTelefoneInput] = useState('')
 
     const handleChange = e => {
         const { name, value } = e.target;
         // console.log(e.target)
-        setRepresentanteInput({[name] : value})
+        setRepresentanteInput({ [name]: value })
 
-        console.log(representanteInput)
+        // console.log(representanteInput)
     }
 
 
-    
+
     const enviaDados = async (e) => {
         e.preventDefault()
-        representanteInput= {
+        representanteInput = {
             phones: [
-               {number: telefoneInput}
-           ],
-           ...representanteInput
+                { number: telefoneInput }
+            ],
+            ...representanteInput
 
-      }
-   
-    
-        console.log(representanteInput);
-        console.log(telefoneInput);
+        }
+        representanteInput.dateOfBirth = moment(representanteInput.dateOfBirth, "DD/MM/YYYY").format('YYYY-MM-DD');
+        if(representanteInput.cpf != 400) {
+            alert('Por favor corriga o cpf')
+        }
+        
+     const res = await  api.post('/representatives',
+            representanteInput
+        )
+        
+        console.log(res)
+           
 
-        api.post('/representatives', 
-                representanteInput
-            )
-            .then(function(response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-        });
+     const update = await api.patch('/companies/'+getCompanyId()+'/representatives/' + res.data.id, {headers: {Authorization: getToken()}}
+        )
+
+        console.log(update)
     }
 
-  
+
 
     const limpar = () => {
         setRepresentanteInput(
 
             {
-                id: '' ,
+                id: '',
                 // foto: {foto},
                 cpf: '',
-                name : '',
+                name: '',
                 email: '',
                 password: '',
                 phones: [
-                    {number: ''}
+                    { number: '' }
                 ],
                 description: '',
                 dateOfBirth: '',
                 gender: ''
-                
+
             }
 
-        )     
+        )
     }
-//    const deletarRegistro = () => {
-//         this.setState(() => this.initialState);
-//     }
-    
-    return(
+    //    const deletarRegistro = () => {
+    //         this.setState(() => this.initialState);
+    //     }
+
+    return (
         <div className="container">
             {/* {console.log(representanteInput)} */}
             <div className="content">
@@ -116,11 +120,11 @@ function Representante () {
                                         <div className="col-md-10">
                                             <div className="form-group">
                                                 <label className="control-label">Nome</label>
-                                                <input 
+                                                <input
                                                     autoComplete="off"
-                                                    placeholder="Nome"  
-                                                    type="text" 
-                                                    onChange={handleChange}    
+                                                    placeholder="Nome"
+                                                    type="text"
+                                                    onChange={handleChange}
                                                     value={representanteInput.name}
                                                     name="name"
                                                     required
@@ -133,15 +137,15 @@ function Representante () {
                                         <div className="col-md-9">
                                             <div className="form-group">
                                                 <label className="control-label">Descrição</label>
-                                                <input 
+                                                <input
                                                     autoComplete="off"
-                                                    placeholder="Descrição"  
+                                                    placeholder="Descrição"
                                                     type="text" className="form-control"
-                                                    onChange={handleChange} 
-                                                    required   
+                                                    onChange={handleChange}
+                                                    required
                                                     value={representanteInput.description}
                                                     name="description"
-                                                    >
+                                                >
 
                                                 </input>
                                             </div>
@@ -151,73 +155,74 @@ function Representante () {
                                         <div className="col-md-10">
                                             <div className="form-group">
                                                 <label className="control-label">Telefone</label>
-                                                <InputMask 
+                                                <InputMask
                                                     autoComplete="off"
-                                                    placeholder="Telefone"  
-                                                    type="text" 
+                                                    placeholder="Telefone"
+                                                    type="text"
                                                     className="form-control"
-                                                    onChange={e => setTelefoneInput(e.target.value)} 
-                                                       
+                                                    onChange={e => setTelefoneInput(e.target.value)}
+
                                                     required
                                                     value={telefoneInput}
                                                     name="phones"
-                                                    
-                                                    mask="+5\5 99999-9999"
-                                                    >
+
+                                                    mask="\+55 (99)\99999-9999"
+                                                >
 
                                                 </InputMask>
                                                 {console.log(telefoneInput)}
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="row ml-1">
                                         <div className="col-md-5">
                                             <div className="form-group">
                                                 <label className="control-label">Nascimento</label>
-                                                <InputMask 
+                                                <InputMask
                                                     autoComplete="off"
-                                                    placeholder="Data de Nascimento"  
-                                                    type="text" 
+                                                    placeholder="Data de Nascimento"
+                                                    type="text"
                                                     className="form-control"
-                                                    onChange={handleChange}    
+                                                    onChange={handleChange}
                                                     required
                                                     value={representanteInput.dateOfBirth}
                                                     name="dateOfBirth"
-                                                    mask="9999/99/99"
-                                                    >
+                                                    mask="99/99/9999"
+                                                >
 
                                                 </InputMask>
                                             </div>
                                         </div>
-                                        <div className="col-md-5">
+                                        <div className="col-md-2">
                                             <div className="form-group">
                                                 <label className="control-label">Sexo</label>
-                                                <input 
+                                                <select
                                                     autoComplete="off"
-                                                    placeholder="sexo" 
-                                                    type="text" 
+                                                    placeholder="sexo"
+                                                    type="text"
                                                     className="form-control"
-                                                    onChange={handleChange}    
+                                                    onChange={handleChange}
                                                     required
                                                     value={representanteInput.gender}
                                                     name="gender">
-
-                                                </input>
+                                                        <option>M</option>
+                                                        <option>F</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="row ml-1">
                                         <div className="col-md-5">
                                             <div className="form-group">
                                                 <label className="control-label">Email</label>
-                                                <input 
+                                                <input
                                                     autoComplete="off"
-                                                    placeholder="Emai"  
-                                                    type="email" 
+                                                    placeholder="Emai"
+                                                    type="email"
                                                     className="form-control"
-                                                    onChange={handleChange}    
+                                                    onChange={handleChange}
                                                     required
                                                     value={representanteInput.email}
                                                     name="email">
@@ -228,12 +233,12 @@ function Representante () {
                                         <div className="col-md-5">
                                             <div className="form-group">
                                                 <label className="control-label">Senha</label>
-                                                <input 
+                                                <input
                                                     autoComplete="off"
-                                                    placeholder="senha" 
-                                                    type="text" 
+                                                    placeholder="senha"
+                                                    type="text"
                                                     className="form-control"
-                                                    onChange={handleChange}    
+                                                    onChange={handleChange}
                                                     required
                                                     value={representanteInput.password}
                                                     name="password">
@@ -244,28 +249,28 @@ function Representante () {
                                         <div className="col-md-8">
                                             <div className="form-group">
                                                 <label className="control-label">Cpf</label>
-                                                <InputMask 
+                                                <InputMask
                                                     autoComplete="off"
-                                                    placeholder="Cpf" 
-                                                    type="text" 
+                                                    placeholder="Cpf"
+                                                    type="text"
                                                     className="form-control"
-                                                    onChange={handleChange}    
+                                                    onChange={handleChange}
                                                     required
                                                     value={representanteInput.cpf}
                                                     name="cpf"
                                                     mask="999.999.999-99"
-                                                    >
+                                                >
 
                                                 </InputMask>
                                             </div>
                                         </div>
                                     </div>
-                                    <Card.Footer style={{"textAlign":"right"}}>
-                                            <Button size="sm" variant="success" type="submit">
-                                                    <FontAwesomeIcon icon={faSave}/> Cadastrar
+                                    <Card.Footer style={{ "textAlign": "right" }}>
+                                        <Button size="sm" variant="success" type="submit">
+                                            <FontAwesomeIcon icon={faSave} /> Cadastrar
                                             </Button>{' '}
-                                            <Button size="sm" variant="info" onClick={limpar}>
-                                                    <FontAwesomeIcon icon={faUndo}/> deletar
+                                        <Button size="sm" variant="info" onClick={limpar}>
+                                            <FontAwesomeIcon icon={faUndo} /> deletar
                                             </Button>
                                     </Card.Footer>
                                 </form>
@@ -274,7 +279,7 @@ function Representante () {
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
     )
 }
 

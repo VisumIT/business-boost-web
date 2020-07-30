@@ -69,6 +69,7 @@ function Routes() {
                 <PrivateRoutes path='/user/dashboard' component={Dashboard} />
                 <PrivateRoutes path='/user/company' component={Empresa} />
                 <PrivateRoutes path='/user/editCompany/:id' component={EditEmpresa} />
+                <PrivateRoutes path='/user/editrepresentative/:id' component={Representantes} />
                 <PrivateRoutes path='/user/sign_up_representatives' component={Representantes} />
                 <PrivateRoutes path='/user/representatives' component={ListaRepresentantes}/>
                 <PrivateRoutes path='/user/products' component={Products} />

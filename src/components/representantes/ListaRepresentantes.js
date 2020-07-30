@@ -35,14 +35,21 @@ export default class ListaRepresentante extends Component {
     }
 
     mostrarRepresentantes() {
-        // const url = '/companies/'+getCompanyId()+'/representatives'
-        // api.get(url, {header: { Authorization: getToken()}})
-        // .then(response => {
-        //     this.setState({
-        //         representantes: response.data
 
-        //     })
-        // })
+
+        const url = '/companies/' + getCompanyId() + '/representatives'
+        api.get(url, {
+            headers:
+                { Authorization: getToken() }
+        })
+            .then(response => {
+                this.setState({
+                    representantes: response.data
+
+                })
+                console.log(response.data)
+            })
+
         // api.get('/companies/1/representatives')
         // .then(response => {
         //     this.setState({
@@ -51,27 +58,6 @@ export default class ListaRepresentante extends Component {
         //     })
         // })
 
-        // axios.get(api)
-        //     .then(response => response.data)
-        //     .then((data) => {
-        //         this.setState({representantes: data})
-
-        //     })
-
-
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", getToken());
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch("http://52.3.253.2:8080/companies/"+getCompanyId()+"/representatives", requestOptions)
-            .then(response => response.json())
-            .then(result => this.setState(result))
-            .catch(error => console.log('error', error));
 
     }
 
@@ -94,11 +80,15 @@ export default class ListaRepresentante extends Component {
 
         return (
             <div className="container">
-                <Link to="/user/sign_up_representatives">
-                    <Button variant="outline-dark">Cadastrar representante</Button>
-                </Link>
-                <Table bordered hover striped variant="light">
 
+                <Table bordered hover striped variant="light">
+                    <Link to="/user/sign_up_representatives">
+                        <Button variant="outline-success" size="sm">
+                            <FontAwesomeIcon icon={faList} />
+                            {' '}
+                            Cadastrar representante
+                        </Button>
+                    </Link>
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -131,7 +121,7 @@ export default class ListaRepresentante extends Component {
                                     </td>
                                     <td>
                                         <ButtonGroup>
-                                            <Link class="btn btn-sm btn-outline-primary" to={"/Editarepresentantes" + representantes.id}><FontAwesomeIcon icon={faEdit} /></Link>{' '}
+                                            <Link class="btn btn-sm btn-outline-primary" to={"/editrepresentative/" + representantes.id}><FontAwesomeIcon icon={faEdit} /></Link>{' '}
                                             <Button size="sm" variant="outline-danger" onClick={() => { this.deletar(representantes.id) }}><FontAwesomeIcon icon={faTrash} /></Button>{' '}
                                         </ButtonGroup>
                                     </td>
