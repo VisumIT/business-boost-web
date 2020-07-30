@@ -51,3 +51,9 @@ export const getCompanyId = () => {
     const company = JSON.parse(localStorage.getItem(COMPANY));
     return company.id;
 }
+
+export const getOrders = () => {
+    const company = JSON.parse(localStorage.getItem(COMPANY));
+    delete company.password
+    return company.orders;
+}

@@ -17,7 +17,8 @@ class CadastroEmpresa extends Component {
         email: '',
         password: '',
         site: '',
-        description: ''
+        description: '',
+        logo: 'https://storage.googleapis.com/teste-ds3-5ded5.appspot.com/company_avatar.png-1835752190'
     }
 
     async CadastroSucesso() {
@@ -142,11 +143,11 @@ class CadastroEmpresa extends Component {
                             <nav className="navbar navbar-light ">
                                 <a className="navbar-brand"></a>
                                 <form className="form-inline">
-                                    <button className="btn btn-outline-success my-2 mr-2 my-sm-0" type="submit">
-                                        <a href="login">Login</a>
+                                    <button className="btn btn-light border border-dark mr-2" type="submit">
+                                        <a href="sign_in">Login</a>
                                     </button>
-                                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                        <a href="login">Cadastre-se</a>
+                                    <button className="btn btn-light border border-dark" type="submit">
+                                        <a href="sign_up">Cadastre-se</a>
                                     </button>
 
                                 </form>
