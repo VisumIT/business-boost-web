@@ -9,8 +9,11 @@ import Navbar from '../components/Navbar';
 import Dashboard from '../components/Dashboard';
 import Empresa from '../components/empresa/Empresa';
 import EditEmpresa from '../components/empresa/EditEmpresa'
+import ImagemEmpresa from '../components/empresa/imagemEmpresa'
 import Representantes from '../components/representantes/Representantes';
-import Products from '../components/Products';
+import Products from '../components/produtos/Produtos';
+import CadastroProduto from '../components/produtos/CadastroProduto'
+import ImagemProduto from '../components/produtos/imagemProduto'
 import ContainerPedidos from '../components/pedidos/ContainerPedidos';
 import ListaRepresentantes from '../components/representantes/ListaRepresentantes'
 
@@ -73,6 +76,9 @@ function Routes() {
                 <PrivateRoutes path='/user/representatives' component={ListaRepresentantes}/>
                 <PrivateRoutes path='/user/products' component={Products} />
                 <PrivateRoutes path='/user/orders' component={ContainerPedidos} />
+                <PrivateRoutes path='/user/newProduct' component={CadastroProduto} />
+                <PrivateRoutes path='/user/imageProduct/:id' component={ImagemProduto} />
+                <PrivateRoutes path='/user/imageCompany' component={ImagemEmpresa} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

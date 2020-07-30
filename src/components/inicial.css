@@ -1,0 +1,35 @@
+body{
+    font: 20px Arial, sans-serif;
+}
+
+.navbar_inicial {
+    background-color: #17C3ED;
+}
+
+.quem-somos{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/*VER PAGINATION BOOTSTRAP*/
+
+.margin{
+    padding-bottom: 50px;
+    padding-top: 10px;
+}
+
+#mvl{
+    background-image: url(../components/imagens/companyWall.jpg);
+    background-attachment: fixed;
+}
+
+.mvl{
+    background-color: rgba(255, 255, 255, 0.4);
+    /* background-image: url(../components/imagens/companyWall.jpg); */
+    color: black;
+}
+
+.bg-footer{
+    background-color: black;
+    color: white;
+}

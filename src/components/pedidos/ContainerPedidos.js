@@ -11,13 +11,13 @@ function ContainerPedidos() {
         async function listaPedidos() {
             let idCompany = 2
             const res = await api.get(`/company/${idCompany}/orders`)
-            if (res.status == 200) setPedidos(res.data)
+            if (res.status === 200) setPedidos(res.data)
         }
         listaPedidos();
     }, []);
 
     return (
-        <div className="container">
+        <div className="container mt-3">
             <TabelaPedidos pedidos={pedidos} />
         </div>
     )

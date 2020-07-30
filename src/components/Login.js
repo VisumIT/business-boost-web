@@ -40,7 +40,19 @@ function Login() {
     }
 
     return (
-        <div className="container mt-5 " >
+        <div className="container">
+            <nav className="navbar navbar-light ">
+                                <a className="navbar-brand"></a>
+                                <form className="form-inline">
+                                    <button className="btn btn-light border border-dark mr-2" type="submit">
+                                        <a href="sign_in">Login</a>
+                                    </button>
+                                    <button className="btn btn-light border border-dark" type="submit">
+                                        <a href="sign_up">Cadastre-se</a>
+                                    </button>
+
+                                </form>
+                            </nav>
             <div className="text-center row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
