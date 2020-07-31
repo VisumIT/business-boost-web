@@ -47,7 +47,7 @@ class Dashboard extends Component {
                                 <div class="d-flex m-b-30 align-items-center no-block">
                                     <h5 class="card-title ">Yearly Sales</h5>
                                 </div>
-                                <div id="morris-area-chart" style={{ "height": "350px;" }}></div>
+                                <div id="morris-area-chart" style={{ "height": "350px" }}></div>
                             </div>
                             <div class="card-body bg-light">
                                 <div class="row text-center m-b-20">
