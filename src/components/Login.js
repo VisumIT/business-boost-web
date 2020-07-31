@@ -27,7 +27,7 @@ function Login() {
         try {
             e.preventDefault();
             const res = await signIn({ email, password })
-            if (res.status === 403 || res.status === 400) {
+            if (!res) {
                 setError("Email ou senha invalidos!")
             } else {
                 history.push('/user/dashboard')

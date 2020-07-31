@@ -6,7 +6,7 @@ const getToken = () => {
 }
 
 const api = axios.create({
-    baseURL:"http://52.3.253.2:8080",
+    baseURL:"http://localhost:8080",
     headers : {
         "Authorization": `${getToken()}`
     }

@@ -47,10 +47,8 @@ export default class ListaRepresentante extends Component {
     }
 
     render() {
-        console.log(this.state.representantes)
         return (
-            <div className="container">
-
+            <div className="container-fluid">
                 <Table bordered hover striped variant="light">
                     <Link to="/user/sign_up_representatives">
                         <Button variant="outline-success mb-3" size="sm">
@@ -99,16 +97,9 @@ export default class ListaRepresentante extends Component {
                                 </tr>
                             ))
                         }
-
-
                     </tbody>
                 </Table>
             </div>
         )
-
-
-
-
-
     }
 }

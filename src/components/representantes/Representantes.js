@@ -89,16 +89,11 @@ function Representante() {
 
         )
     }
-    //    const deletarRegistro = () => {
-    //         this.setState(() => this.initialState);
-    //     }
-
     return (
-        <div className="container">
-            {/* {console.log(representanteInput)} */}
-            <div className="content">
-                <div className="row">
-                    <div className="col-md-8">
+        <div className="container-fluid">
+            {/* <div className="content"> */}
+                {/* <div className="row"> */}
+                    {/* <div className="col-md-8"> */}
                         <div className="card">
                             <div className="header">
                                 <h4 className="title pt-2 ml-3">Cadastro de Representante</h4>
@@ -266,9 +261,9 @@ function Representante() {
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    {/* </div> */}
+                {/* </div> */}
+            {/* </div> */}
         </div>
     )
 }
