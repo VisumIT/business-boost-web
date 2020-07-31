@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js'
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Api from '../../axios/api';
+import api from '../../services/api';
 
 import { getCompanyId } from '../../services/auth-service'
 
@@ -11,7 +11,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 function CardProduto({ products, refresh }) {
 
     async function deleteProduto() {
-        await Api.delete(`/company/${getCompanyId()}/products/` + products.id)
+        await api.delete(`/company/${getCompanyId()}/products/` + products.id)
 
         return refresh()
     }

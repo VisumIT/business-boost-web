@@ -1,4 +1,4 @@
-import React, { Component, useReducer, useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import moment from 'moment';
 
@@ -6,18 +6,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import {Button, Card} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
-import axios from 'axios'
-import api from '../../axios/api';
-import { getToken, getCompanyId } from '../../services/auth-service';
-
-/*
-
-Victor F. Amaral
-Cadastro dos representantes
-
-*/
-
-
+import api from '../../services/api';
+import { getCompanyId } from '../../services/auth-service';
 
 function Representante() {
 
@@ -59,7 +49,7 @@ function Representante() {
 
         }
         representanteInput.dateOfBirth = moment(representanteInput.dateOfBirth, "DD/MM/YYYY").format('YYYY-MM-DD');
-        if(representanteInput.cpf != 400) {
+        if(representanteInput.cpf !== 400) {
             alert('Por favor corriga o cpf')
         }
         
@@ -70,7 +60,7 @@ function Representante() {
         console.log(res)
            
 
-     const update = await api.patch('/companies/'+getCompanyId()+'/representatives/' + res.data.id, {headers: {Authorization: getToken()}}
+     const update = await api.patch('/companies/'+getCompanyId()+'/representatives/' + res.data.id
         )
 
         console.log(update)

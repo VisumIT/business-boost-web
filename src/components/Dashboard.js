@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Api from '../axios/api'
-import { getCompanyId, getCompany, getOrders } from '../services/auth-service'
+import {  getCompany, getOrders } from '../services/auth-service'
 
 import './Dashboard.css';
 
@@ -31,13 +30,7 @@ class Dashboard extends Component {
 
         return (
 
-            // <div class="page-wrapper">
-
             <div class="container-fluid">
-                {console.log(orders10)}
-                {/* <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== --> */}
                 <div class="row page-titles mt-2">
                     <div class="col-md-5 align-self-center">
                     </div>
@@ -47,12 +40,6 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Yearly Sales -->
-                <!-- ============================================================== --> */}
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="card oh">
@@ -78,11 +65,7 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <!-- ============================================================== -->
-                <!-- News -->
-                <!-- ============================================================== --> */}
                 <div class="row mt-2">
-                    {/* <!-- column --> */}
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
@@ -119,8 +102,6 @@ class Dashboard extends Component {
                     </div>
                 </div>
             </div>
-
-            // </div>
         )
     }
 }

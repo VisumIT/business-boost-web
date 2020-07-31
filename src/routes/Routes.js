@@ -1,22 +1,19 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Inicial from '../components/Inicial';
 import Login from '../components/Login';
 import CadastroEmpresa from '../components/empresa/CadastroEmpresa';
-
 import Navbar from '../components/Navbar';
 import Dashboard from '../components/Dashboard';
 import Empresa from '../components/empresa/Empresa';
-import EditEmpresa from '../components/empresa/EditEmpresa'
-import ImagemEmpresa from '../components/empresa/imagemEmpresa'
+import EditEmpresa from '../components/empresa/EditEmpresa';
+import ImagemEmpresa from '../components/empresa/ImagemEmpresa';
 import Representantes from '../components/representantes/Representantes';
 import Products from '../components/produtos/Produtos';
 import CadastroProduto from '../components/produtos/CadastroProduto'
 import ImagemProduto from '../components/produtos/imagemProduto'
 import ContainerPedidos from '../components/pedidos/ContainerPedidos';
-import ListaRepresentantes from '../components/representantes/ListaRepresentantes'
-
+import ListaRepresentantes from '../components/representantes/ListaRepresentantes';
 import { isSignedIn } from '../services/auth-service';
 
 import './Routes.css';
@@ -30,7 +27,6 @@ const NotFound = () => {
 }
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
-    const history = useHistory();
     return (
         <Route
             {...rest}
@@ -52,7 +48,6 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
                             </div>
                         </div>
                     </div>
-
                 ) : (
                         <Redirect to={{ pathname: '/users/sign_in', state: { from: props.location } }} />
                     )

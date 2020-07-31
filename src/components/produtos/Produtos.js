@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js'
 import React, { Component } from 'react';
 import CardProduto from './CardProduto';
-import Api from '../../axios/api';
+import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import { getCompanyId } from '../../services/auth-service'
 
@@ -13,7 +13,7 @@ class Produto extends Component {
     }
 
     componentDidMount = async () => {
-        await Api.get(`/company/${getCompanyId()}/products`)
+        await api.get(`/company/${getCompanyId()}/products`)
             .then(response => this.setState({
                 products: response.data
             }))

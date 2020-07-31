@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Api from '../../axios/api'
+import api from '../../services/api'
 import InputMask from 'react-input-mask'
-import { getCompany, getCompanyId, getToken} from '../../services/auth-service';
+import { getCompany, getCompanyId } from '../../services/auth-service';
 
 class EditEmpresa extends Component {
 
@@ -18,9 +18,6 @@ class EditEmpresa extends Component {
     }
 
     componentDidMount = async () => {
-        const id = this.props.match.params.id
-        
-        // const res = await Api.get('/companies/' + id)
         const res = getCompany()
         this.setState({
             id: res.id,
@@ -41,38 +38,16 @@ class EditEmpresa extends Component {
 
     handlerSubmit = async (event) => {
         event.preventDefault()
-        // const req = this.state
-        // delete req.password
-        // console.log(req)
-        // console.log(getCompanyId())
-        // await Api.put(`/companies/${getCompanyId()}`, { 
-        //     headers: {
-        //         Authorization: getToken()
-        //     },
-        //     data: req
-
-        // })
-        // this.props.history.push('/user/company')
-
-
-
-        var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwNkAwNi5jb20iLCJleHAiOjE1OTU2MjA0ODl9.YvU6uMtdbonWz3ysfpYScpGkUK64M3LW4U-b-9q6eks7-lq2mrjQLAbi3xAghTg04Hxw6tEno3U5YnuGQMP3SQ");
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({"phones":[{"number":"1141419967"},{"number":"1141419967"}],"address":"Sol","publicPlace":"Rua","site":"mc.com","number":"1002","uf":"SP","neighborhood":"Jardim Tupanci","city":"Barueri","cep":"06414-070","stateRegistration":"121.375.209.410","companyName":"Benedita e Marcelo Restaurante ME","cnpj":"23.407.610/0001-00","fictitiousName":"Mc Donalds","email":"06@06.com","password":"123456789","description":"comercio de alimentos"});
-
-var requestOptions = {
-  method: 'PUT',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-
-fetch("http://localhost:8080/companies/8", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+        const dados = this.state
+        delete dados.password
+        try {
+            const res = await api.put(`/companies/${getCompanyId()}`, dados)
+            if(res.status === 200){
+                this.props.history.push('/user/company')
+            }
+        } catch (error) {
+           console.log(error) 
+        }
     }
 
     render() {

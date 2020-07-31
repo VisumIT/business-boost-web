@@ -14,7 +14,7 @@ export const signIn = async (acesso) => {
             localStorage.setItem(TOKEN_KEY, JSON.stringify(token))
 
             try {
-                const response = await api.get("/companies/whois", { headers: { Authorization: token } })
+                const response = await api.get("/companies/whois")
                 var comp = response.data
                 delete comp.password
                 localStorage.setItem(COMPANY, JSON.stringify(comp))
@@ -35,10 +35,6 @@ export const signOut = () => {
 export const isSignedIn = () => {
     const token = localStorage.getItem(TOKEN_KEY);
     return JSON.parse(token);
-}
-
-export const getToken = () => {
-    return JSON.parse(localStorage.getItem(TOKEN_KEY));
 }
 
 export const getCompany = () => {
