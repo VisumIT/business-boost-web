@@ -1,5 +1,6 @@
 import React, { useReducer, useState, useEffect } from "react";
 import api from "../../axios/api";
+import { getToken, getCompanyId } from '../../services/auth-service';
 
 import TabelaPedidos from './TabelaPedidos';
 
@@ -9,8 +10,8 @@ function ContainerPedidos() {
 
     useEffect(() => {
         async function listaPedidos() {
-            let idCompany = 2
-            const res = await api.get(`/company/${idCompany}/orders`)
+            let idCompany = getCompanyId()
+            const res = await api.get(`/company/${idCompany}/orders`, {headers: {Authorization: getToken()}})
             if (res.status === 200) setPedidos(res.data)
         }
         listaPedidos();

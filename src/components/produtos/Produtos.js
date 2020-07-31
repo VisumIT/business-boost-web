@@ -43,8 +43,8 @@ class Produto extends Component {
                     <div className="card-header">
                         <h5>Lista de Produtos</h5>
                         <div class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search"></input>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </div>
 
                         <Link to="/user/newProduct"> <h6 className='mt-3'>Cadastrar Produto</h6> </Link>

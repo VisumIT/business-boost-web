@@ -9,10 +9,10 @@ const ListaPedidos = (props) => {
             <thead>
                 <tr>
                     <th scope="col">Numero</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Visualizar</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Informações</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@ const ListaPedidos = (props) => {
                         <th scope="row">{pedido.id}</th>
                         <td>{pedido.createDate.split('T')[0]}</td>
                         <td>{pedido.status}</td>
-                        <td>{pedido.totalPrice}</td>
+                        <td>R$ {pedido.totalPrice}</td>
                         <td>
                             <button
                                 className="btn btn-info ml--2"

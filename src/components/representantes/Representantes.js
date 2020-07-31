@@ -1,5 +1,4 @@
 import React, { Component, useReducer, useState } from 'react'
-import React, {useReducer, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import moment from 'moment';
 
@@ -167,7 +166,7 @@ function Representante() {
                                                     value={telefoneInput}
                                                     name="phones"
 
-                                                    mask="\+55 (99)\99999-9999"
+                                                    mask="\(99)\ 9 9999-9999"
                                                 >
 
                                                 </InputMask>

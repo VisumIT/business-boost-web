@@ -39,7 +39,7 @@ function CardProduto({ products, refresh }) {
                 <td className="td-produtos">{products.name}</td>
                 <td className="td-produtos">{products.brand}</td>
                 <td className="td-produtos">{products.category}</td>
-                <td className="td-produtos">R${products.price}</td>
+                <td className="td-produtos">R$ {products.price}</td>
                 <td className="td-produtos">{products.status}</td>
                 <td className="td-produtos">
                     <Link to={"/user/editproducts/" + products.id}>
