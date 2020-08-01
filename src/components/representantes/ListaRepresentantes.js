@@ -49,16 +49,18 @@ export default class ListaRepresentante extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <Button variant="outline-success mb-2 mt-1" size="sm">
-                    <FontAwesomeIcon icon={faList} />
-                    Cadastrar representante
-                </Button>
+                <Link to="/user/sign_up_representatives">
+                    <Button variant="outline-success mb-2 mt-1" size="sm">
+                        <FontAwesomeIcon icon={faList} />
+                        Cadastrar representante
+                    </Button>
+                </Link>
+
                 <div className="card">
                 
                 <Table bordered hover striped variant="light">
-                    <Link to="/user/sign_up_representatives">
+                    
 
-                    </Link>
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -91,7 +93,7 @@ export default class ListaRepresentante extends Component {
                                     </td>
                                     <td>
                                         <ButtonGroup>
-                                            <Link class="btn btn-sm btn-outline-primary" to={"/editrepresentative/" + representantes.id}><FontAwesomeIcon icon={faEdit} /></Link>{' '}
+                                            <Link className="btn btn-sm btn-outline-primary" to={"/editrepresentative/" + representantes.id}><FontAwesomeIcon icon={faEdit} /></Link>{' '}
                                             <Button size="sm" variant="outline-danger" onClick={() => { this.deletar(representantes.id) }}><FontAwesomeIcon icon={faTrash} /></Button>{' '}
                                         </ButtonGroup>
                                     </td>

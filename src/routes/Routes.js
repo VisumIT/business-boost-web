@@ -34,9 +34,9 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
                 isSignedIn() ? (
                     <div className="body">
                         <div className="page-content">
-                            <div class="row">
+                            <div className="row">
                                 <div className="col-md-2">
-                                    <div class="sidebar content-box" style={{ "display": "block" }}>
+                                    <div className="sidebar content-box" style={{ "display": "block" }}>
                                         <Navbar />
                                     </div>
                                 </div>

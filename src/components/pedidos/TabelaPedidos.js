@@ -4,7 +4,7 @@ import PubSub from 'pubsub-js';
 
 const ListaPedidos = (props) => {
     const { pedidos } = props
-
+    console.log(pedidos)
     // formatar dados para serem listados na tabela
     for(let i = 0; pedidos.length > i; i++){
         let array = pedidos[i].createDate.split("T")[0].split('-')
