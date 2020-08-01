@@ -82,7 +82,21 @@ function TabelaSeries(props) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {pedidoDetalhe.totalPrice}
+                            <div className="row">
+                                <div className="col-12">
+                                    <p>
+                                        Numero do pedido feito: {pedidoDetalhe.id}
+                                    </p>
+                                    <p>
+                                        Data que o pedido foi realizado: {pedidoDetalhe.createDate}
+                                    </p>
+                                    <h2>
+                                        <span className="badge">
+                                             R${pedidoDetalhe.totalPrice}
+                                        </span>
+                                    </h2>
+                                </div>
+                            </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
