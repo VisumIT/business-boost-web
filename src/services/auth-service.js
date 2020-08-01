@@ -9,14 +9,13 @@ export const signIn = async (acesso) => {
         const res = await api.post('/login', acesso)
 
         const token = res.data.token
-        localStorage.setItem(TOKEN_KEY, JSON.stringify(token))
-
         try {
             const response = await api.get("/companies/whois")
             console.log(response)
             var comp = response.data
             delete comp.password
             console.log(comp)
+            localStorage.setItem(TOKEN_KEY, JSON.stringify(token))
             localStorage.setItem(COMPANY, JSON.stringify(comp))
             return true
         } catch (error) {

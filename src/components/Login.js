@@ -16,19 +16,32 @@ const MsgError = (props) => {
 
 function Login() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('limpeza@gmail.com');
+    const [password, setPassword] = useState('1234567');
     const [error, setError] = useState('');
+    const [buttonLogin, setButtonLogin] = useState(true);
 
     const history = useHistory();
 
-    async function singIn(e) {
+    const buttonEnviar = () =>(
+        <button className="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    )
+    const buttonEnviarLoading = () =>(
+        <button className="btn btn-lg btn-primary btn-block disabled">
+            Carregando..
+            <span class="spinner-border spinner-border-sm ml-2"></span>
+        </button>
+    )
 
+
+    async function singIn(e) {
+        setButtonLogin(false)
         try {
             e.preventDefault();
             const res = await signIn({ email, password })
             if (!res) {
                 setError("Email ou senha invalidos!")
+                setButtonLogin(true)
             } else {
                 history.push('/user/dashboard')
             }
@@ -93,7 +106,7 @@ function Login() {
                                 <input type="checkbox" value="remember-me"></input> Remember me
                                 </label>
                         </div>
-                        <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        {buttonLogin == true ? buttonEnviar() : buttonEnviarLoading()}
                     </form>
                 </div>
                 <div className="col-md-2"></div>

@@ -29,12 +29,20 @@ class Produto extends Component {
     }
 
     render() {
-
-        const renderData = this.state.products.map(products => {
+        const renderData = this.state.products.length > 0 ? this.state.products.map(products => {
             return (
                 <CardProduto products={products} key={products.id} refresh={this.componentDidMount} />
-            )
-        })
+            )}) 
+            : 
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+
+        // const renderData = this.state.products.map (products => {
+        //     return (
+        //         <CardProduto products={products} key={products.id} refresh={this.componentDidMount} />
+        //     )
+        // })
 
         return (
             <div className="container-fluid">
