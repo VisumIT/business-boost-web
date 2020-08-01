@@ -1,9 +1,11 @@
 import PubSub from 'pubsub-js'
 import React, { Component } from 'react';
 import CardProduto from './CardProduto';
-import Api from '../../axios/api';
+import api from '../../services/api';
 import { Link } from 'react-router-dom';
-import { getCompanyId } from '../../services/auth-service'
+import { getCompanyId } from '../../services/auth-service';
+
+import '../Spinner.css'
 
 class Produto extends Component {
 
@@ -13,7 +15,7 @@ class Produto extends Component {
     }
 
     componentDidMount = async () => {
-        await Api.get(`/company/${getCompanyId()}/products`)
+        await api.get(`/company/${getCompanyId()}/products`)
             .then(response => this.setState({
                 products: response.data
             }))
@@ -29,24 +31,21 @@ class Produto extends Component {
     }
 
     render() {
-
-        const renderData = this.state.products.map(products => {
+        var renderData = this.state.products.length > 0 ? this.state.products.map(products => {
             return (
                 <CardProduto products={products} key={products.id} refresh={this.componentDidMount} />
             )
-        })
-
+        }) : <></>
+        
         return (
             <div className="container-fluid">
-
                 <div className="card mt-3">
                     <div className="card-header">
                         <h5>Lista de Produtos</h5>
                         <div class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search"></input>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </div>
-
                         <Link to="/user/newProduct"> <h6 className='mt-3'>Cadastrar Produto</h6> </Link>
                     </div>
                     <table className="table table-striped">
@@ -60,14 +59,13 @@ class Produto extends Component {
                                 <th scope="col">Opções</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="centered">
                             {renderData}
                         </tbody>
                     </table>
+                    {this.state.products.length > 0 ?<></> : <div className="loader2"></div>}
                 </div>
-
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    {console.log(this.state.detalhesProduct)}
                     <div className="modal-dialog" role="document" style={{ width: 25 + 'rem' }}>
                         <div className="modal-content">
                             <div className="modal-header">
@@ -86,28 +84,8 @@ class Produto extends Component {
                                         <p><strong className="h5">Preço normal:</strong> {this.state.detalhesProduct.price} </p>
                                         <p><strong className="h5">Desconto:</strong> {this.state.detalhesProduct.discount}% </p>
                                         <p><strong className="h5">Preço Total:</strong> {this.state.detalhesProduct.totalPrice} </p>
-
                                     </div>
                                 </div>
-
-
-                                {/* <div class="card mb-3">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            <img src={this.state.detalhesProduct.imagesUrl} class="card-img h-100" alt="..."></img>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
-
-
-
                             </div>
                         </div>
                     </div>

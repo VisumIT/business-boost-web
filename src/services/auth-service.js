@@ -6,22 +6,22 @@ const COMPANY = '@Company:company';
 export const signIn = async (acesso) => {
 
     try {
-
         const res = await api.post('/login', acesso)
-        
-        
-            const token = res.data.token
-            localStorage.setItem(TOKEN_KEY, JSON.stringify(token))
 
-            try {
-                const response = await api.get("/companies/whois", { headers: { Authorization: token } })
-                var comp = response.data
-                delete comp.password
-                localStorage.setItem(COMPANY, JSON.stringify(comp))
-            } catch (error) {
-                console.log(error)
-            }
-        return res
+        const token = res.data.token
+        try {
+            const response = await api.get("/companies/whois")
+            console.log(response)
+            var comp = response.data
+            delete comp.password
+            console.log(comp)
+            localStorage.setItem(TOKEN_KEY, JSON.stringify(token))
+            localStorage.setItem(COMPANY, JSON.stringify(comp))
+            return true
+        } catch (error) {
+            console.log(error)
+        }
+        return false
 
     } catch (error) {
         console.log(error)
@@ -35,10 +35,6 @@ export const signOut = () => {
 export const isSignedIn = () => {
     const token = localStorage.getItem(TOKEN_KEY);
     return JSON.parse(token);
-}
-
-export const getToken = () => {
-    return JSON.parse(localStorage.getItem(TOKEN_KEY));
 }
 
 export const getCompany = () => {

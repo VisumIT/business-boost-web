@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import InputMask from 'react-input-mask'
-
-import { confirmAlert } from 'react-confirm-alert'
-
-import {signIn} from '../../services/auth-service' 
+import InputMask from 'react-input-mask';
+import { confirmAlert } from 'react-confirm-alert';
+import { signIn } from '../../services/auth-service';
 
 import './CadastroEmpresa.css'
+import api from '../../services/api';
 
 class CadastroEmpresa extends Component {
 
@@ -38,14 +37,14 @@ class CadastroEmpresa extends Component {
         var inputCnpj = document.getElementById('cnpj')
         var inputEmail = document.getElementById('email')
 
-        if(erro.Errors){
+        if (erro.Errors) {
             var mensagem = erro.Errors[0].Message
             if (erro.Errors[0].Field === 'cnpj') {
                 inputEmail.style.borderColor = "80bdff"
                 inputCnpj.style.borderColor = "red";
             }
-        }else{
-            var mensagem = erro.message
+        } else {
+            mensagem = erro.message
             inputCnpj.style.borderColor = "#80bdff"
             inputEmail.style.borderColor = "red"
         }
@@ -66,33 +65,22 @@ class CadastroEmpresa extends Component {
     }
 
     handlerSubmit = async (event) => {
-        
         event.preventDefault();
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({ 
-            "fictitiousName": this.state.fictitiousName, 
-            "companyName": this.state.companyName, 
-            "cnpj": this.state.cnpj, 
-            "stateRegistration": this.state.stateRegistration, 
-            "email": this.state.email, 
-            "password": this.state.password, 
-            "site": this.state.site, 
-            "description": this.state.description 
+        var dados = JSON.stringify({
+            "fictitiousName": this.state.fictitiousName,
+            "companyName": this.state.companyName,
+            "cnpj": this.state.cnpj,
+            "stateRegistration": this.state.stateRegistration,
+            "email": this.state.email,
+            "password": this.state.password,
+            "site": this.state.site,
+            "description": this.state.description
         });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
 
         const verificaErro = async (result) => {
 
-            if(result.id != null){
+            if (result.id != null) {
 
                 try {
                     const { email } = result
@@ -109,18 +97,19 @@ class CadastroEmpresa extends Component {
                     console.log(error)
                 }
 
-                
-            }else{
+            } else {
                 this.ErroCadastro(result)
             }
         }
-
-        // Cadastrar a empresa e ja logar no sistema 
-        fetch("http://52.3.253.2:8080/companies", requestOptions)
-            .then(response => response.json())
-            .then(result => verificaErro(result))
-            .catch(error => console.log(error));
-            
+        
+        try {
+            const res = await api.post('/companies', dados)
+            if(res.status === 201){
+                verificaErro(res.data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     render() {
@@ -141,7 +130,7 @@ class CadastroEmpresa extends Component {
                         <div className="col-7 ">
 
                             <nav className="navbar navbar-light ">
-                                <a className="navbar-brand"></a>
+                                <a className="navbar-brand" href="#****"><div></div></a>
                                 <form className="form-inline">
                                     <button className="btn btn-light border border-dark mr-2" type="submit">
                                         <a href="sign_in">Login</a>
@@ -241,13 +230,10 @@ class CadastroEmpresa extends Component {
                                     </div>
                                     <button type="submit" className="btn btn-primary mb-4">Cadastre</button>
                                 </form>
-                                
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

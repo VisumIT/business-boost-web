@@ -16,19 +16,32 @@ const MsgError = (props) => {
 
 function Login() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('limpeza@gmail.com');
+    const [password, setPassword] = useState('123456789');
     const [error, setError] = useState('');
+    const [buttonLogin, setButtonLogin] = useState(true);
 
     const history = useHistory();
 
-    async function singIn(e) {
+    const buttonEnviar = () =>(
+        <button className="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    )
+    const buttonEnviarLoading = () =>(
+        <button className="btn btn-lg btn-primary btn-block disabled">
+            Carregando..
+            <span class="spinner-border spinner-border-sm ml-2"></span>
+        </button>
+    )
 
+
+    async function singIn(e) {
+        setButtonLogin(false)
         try {
             e.preventDefault();
             const res = await signIn({ email, password })
-            if (res.status === 403 || res.status === 400) {
+            if (!res) {
                 setError("Email ou senha invalidos!")
+                setButtonLogin(true)
             } else {
                 history.push('/user/dashboard')
             }
@@ -42,17 +55,17 @@ function Login() {
     return (
         <div className="container">
             <nav className="navbar navbar-light ">
-                                <a className="navbar-brand"></a>
-                                <form className="form-inline">
-                                    <button className="btn btn-light border border-dark mr-2" type="submit">
-                                        <a href="sign_in">Login</a>
-                                    </button>
-                                    <button className="btn btn-light border border-dark" type="submit">
-                                        <a href="sign_up">Cadastre-se</a>
-                                    </button>
+                <div className="navbar-brand"></div>
+                <form className="form-inline">
+                    <button className="btn btn-light border border-dark mr-2" type="submit">
+                        <a href="sign_in">Login</a>
+                    </button>
+                    <button className="btn btn-light border border-dark" type="submit">
+                        <a href="sign_up">Cadastre-se</a>
+                    </button>
 
-                                </form>
-                            </nav>
+                </form>
+            </nav>
             <div className="text-center row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
@@ -93,7 +106,7 @@ function Login() {
                                 <input type="checkbox" value="remember-me"></input> Remember me
                                 </label>
                         </div>
-                        <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        {buttonLogin === true ? buttonEnviar() : buttonEnviarLoading()}
                     </form>
                 </div>
                 <div className="col-md-2"></div>

@@ -3,37 +3,53 @@ import PubSub from 'pubsub-js';
 
 
 const ListaPedidos = (props) => {
-    const {pedidos} = props
+    const { pedidos } = props
+    console.log(pedidos)
+    // formatar dados para serem listados na tabela
+    for(let i = 0; pedidos.length > i; i++){
+        let array = pedidos[i].createDate.split("T")[0].split('-')
+        pedidos[i].createDate = `${array[2]}/${array[1]}/${array[0]}`
+        if(pedidos[i].totalPrice.toString().indexOf('.') === -1){
+            pedidos[i].totalPrice = pedidos[i].totalPrice.toString() + ",00"
+        }else{
+            if(pedidos[i].totalPrice.toString().split('.')[1].length === 2){
+                pedidos[i].totalPrice = pedidos[i].totalPrice.toString().replace(".", ",")
+            }else{
+                pedidos[i].totalPrice = pedidos[i].totalPrice.toString().replace(".", ",") + "0"
+            }
+        }
+    }
+
     return (
         <table className="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">Numero</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Visualizar</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Informações</th>
                 </tr>
             </thead>
             <tbody>
                 {pedidos.map(pedido => (
                     <tr key={pedido.id}>
                         <th scope="row">{pedido.id}</th>
-                        <td>{pedido.createDate.split('T')[0]}</td>
-                        <td>{pedido.status}</td>
-                        <td>{pedido.totalPrice}</td>
+                        <td>{pedido.createDate}</td>
+                        <td>{pedido.status === "created" ? "recebido" : "pendente"}</td>
+                        <td>R$ { pedido.totalPrice }</td>
                         <td>
                             <button
                                 className="btn btn-info ml--2"
-                                href="#" 
-                                data-toggle="modal" 
+                                href="#"
+                                data-toggle="modal"
                                 data-target="#exampleModal"
                                 onClick={
                                     () => {
                                         PubSub.publish('pedidoDetalhe', pedido)
                                     }
                                 } >
-                                Info 
+                                Info
                             </button>
                         </td>
                     </tr>
@@ -55,8 +71,7 @@ function TabelaSeries(props) {
     const { pedidos } = props
 
     return (
-        <div className="card">
-            {console.log(pedidoDetalhe)}
+        <>
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -75,13 +90,8 @@ function TabelaSeries(props) {
                     </div>
                 </div>
             </div>
-            <div className="card-header">
-                <h5>Lista de Pedidos</h5>
-            </div>
-
             <ListaPedidos pedidos={pedidos} />
-
-        </div>
+        </>
     )
 }
 
