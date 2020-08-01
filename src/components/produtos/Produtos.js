@@ -15,10 +15,19 @@ class Produto extends Component {
     }
 
     componentDidMount = async () => {
-        await api.get(`/company/${getCompanyId()}/products`)
-            .then(response => this.setState({
-                products: response.data
-            }))
+        const res = await api.get(`/company/${getCompanyId()}/products`)
+        console.log(res.data)
+        const dados = res.data.map(produto => {
+            produto.price = parseFloat(produto.price).toFixed(2).replace(".",",")
+            produto.totalPrice = parseFloat(produto.totalPrice).toFixed(2).replace(".",",")
+            produto.status = produto.status == "active" ? "ativo":"desativo"
+
+            return produto
+        })
+        this.setState({
+            products: dados
+        })
+
         console.log(this.state);
     }
 
@@ -51,6 +60,7 @@ class Produto extends Component {
                     <table className="table table-striped">
                         <thead>
                             <tr className="text-center">
+                                <th scope="col">Referencia</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Marca</th>
                                 <th scope="col">Categoria</th>
