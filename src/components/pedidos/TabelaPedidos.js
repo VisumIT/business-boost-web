@@ -6,20 +6,20 @@ const ListaPedidos = (props) => {
     const { pedidos } = props
     console.log(pedidos)
     // formatar dados para serem listados na tabela
-    for(let i = 0; pedidos.length > i; i++){
-        let array = pedidos[i].createDate.split("T")[0].split('-')
-        pedidos[i].createDate = `${array[2]}/${array[1]}/${array[0]}`
-        if(pedidos[i].totalPrice.toString().indexOf('.') === -1){
-            pedidos[i].totalPrice = pedidos[i].totalPrice.toString() + ",00"
-        }else{
-            if(pedidos[i].totalPrice.toString().split('.')[1].length === 2){
-                pedidos[i].totalPrice = pedidos[i].totalPrice.toString().replace(".", ",")
-            }else{
-                pedidos[i].totalPrice = pedidos[i].totalPrice.toString().replace(".", ",") + "0"
-            }
-        }
-    }
-
+    // for(let i = 0; pedidos.length > i; i++){
+    //     let array = pedidos[i].createDate.split("T")[0].split('-')
+    //     pedidos[i].createDate = `${array[2]}/${array[1]}/${array[0]}`
+    //     if(pedidos[i].totalPrice.toString().indexOf('.') === -1){
+    //         pedidos[i].totalPrice = pedidos[i].totalPrice.toString() + ",00"
+    //     }else{
+    //         if(pedidos[i].totalPrice.toString().split('.')[1].length === 2){
+    //             pedidos[i].totalPrice = pedidos[i].totalPrice.toString().replace(".", ",")
+    //         }else{
+    //             pedidos[i].totalPrice = pedidos[i].totalPrice.toString().replace(".", ",") + "0"
+    //         }
+    //     }
+    // }
+    let teste = ""
     return (
         <table className="table table-striped">
             <thead>
@@ -37,7 +37,7 @@ const ListaPedidos = (props) => {
                         <th scope="row">{pedido.id}</th>
                         <td>{pedido.createDate}</td>
                         <td>{pedido.status === "created" ? "recebido" : "pendente"}</td>
-                        <td>R$ { pedido.totalPrice }</td>
+                        <td>R$ {pedido.totalPrice}</td>
                         <td>
                             <button
                                 className="btn btn-info ml--2"
@@ -82,7 +82,7 @@ function TabelaSeries(props) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {pedidoDetalhe.totalPrice}
+                            {parseFloat(pedidoDetalhe.totalPrice).toFixed(2).replace(".",",")}
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>

@@ -67,45 +67,32 @@ class CadastroEmpresa extends Component {
     handlerSubmit = async (event) => {
         event.preventDefault();
 
-        var dados = JSON.stringify({
-            "fictitiousName": this.state.fictitiousName,
-            "companyName": this.state.companyName,
-            "cnpj": this.state.cnpj,
-            "stateRegistration": this.state.stateRegistration,
-            "email": this.state.email,
-            "password": this.state.password,
-            "site": this.state.site,
-            "description": this.state.description
-        });
 
         const verificaErro = async (result) => {
 
-            if (result.id != null) {
-
-                try {
-                    const { email } = result
-                    const password = this.state.password
-                    const res = await signIn({ email, password })
-                    if (res.status === 403 || res.status === 400) {
-                        this.ErroCadastro(result)
-                    } else {
-                        this.props.history.push('/user/dashboard')
-                        this.CadastroSucesso()
-                    }
-
-                } catch (error) {
-                    console.log(error)
+            try {
+                const { email } = result
+                const password = this.state.password
+                const res = await signIn({ email, password })
+                if (res.status === 403 || res.status === 400) {
+                    this.ErroCadastro(result)
+                } else {
+                    this.props.history.push('/user/dashboard')
+                    this.CadastroSucesso()
                 }
 
-            } else {
-                this.ErroCadastro(result)
+            } catch (error) {
+                console.log(error)
             }
+
         }
         
         try {
-            const res = await api.post('/companies', dados)
+            const res = await api.post('/companies', this.state)
             if(res.status === 201){
                 verificaErro(res.data)
+            }else{
+                this.ErroCadastro(res.data)
             }
         } catch (error) {
             console.log(error)

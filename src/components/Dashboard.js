@@ -15,7 +15,6 @@ class Dashboard extends Component {
     }
 
     render() {
-
         var valorTotal = getOrders().reduce(function(total, item){
             return total + item.totalPrice
         }, 0)
@@ -41,7 +40,7 @@ class Dashboard extends Component {
                             <div class="card-body bg-light">
                                 <div class="row text-center m-b-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h2 class="m-b-0 font-light">R$ {valorTotal.toString().replace('.',',')}</h2><span class="text-muted">Preço total de pedidos</span>
+                                        <h2 class="m-b-0 font-light">R$ {valorTotal.toFixed(2).replace(".",",")}</h2><span class="text-muted">Preço total de pedidos</span>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <h2 class="m-b-0 font-light">{getOrders().length}</h2><span class="text-muted">Total de Pedidos</span>
@@ -75,14 +74,14 @@ class Dashboard extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {orders10.map(order => (
+                                        {getOrders() > 0 ? getOrders().map(order => (
                                             <tr key={order.id}>
                                                 <td class="text-center">{order.representativeId}</td>
                                                 <td class="text-center">{order.clientId}</td>
                                                 <td class="text-center">{order.createDate.split('T', 1)}</td>
                                                 <td class="text-center"><span class="text-success">R${order.totalPrice}</span></td>
                                             </tr>
-                                        ))}
+                                        )).reverse().length < 5: <></>}
 
                                     </tbody>
                                 </table>
