@@ -4,9 +4,8 @@ import CardProduto from './CardProduto';
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import { getCompanyId } from '../../services/auth-service';
-import Spinner from 'react-bootstrap/Spinner';
 
-import './Spinner.css'
+import '../Spinner.css'
 
 class Produto extends Component {
 

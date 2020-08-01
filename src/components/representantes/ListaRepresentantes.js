@@ -6,7 +6,7 @@ import { faList, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import api from '../../services/api'
 import { Link } from 'react-router-dom'
 import { getCompanyId } from '../../services/auth-service';
-
+import '../Spinner.css';
 export default class ListaRepresentante extends Component {
 
     constructor(props) {
@@ -49,13 +49,15 @@ export default class ListaRepresentante extends Component {
     render() {
         return (
             <div className="container-fluid">
+                <Button variant="outline-success mb-2 mt-1" size="sm">
+                    <FontAwesomeIcon icon={faList} />
+                    Cadastrar representante
+                </Button>
+                <div className="card">
+                
                 <Table bordered hover striped variant="light">
                     <Link to="/user/sign_up_representatives">
-                        <Button variant="outline-success mb-3" size="sm">
-                            <FontAwesomeIcon icon={faList} />
-                            {' '}
-                            Cadastrar representante
-                        </Button>
+
                     </Link>
                     <thead>
                         <tr>
@@ -99,6 +101,8 @@ export default class ListaRepresentante extends Component {
                         }
                     </tbody>
                 </Table>
+                {this.state.representantes.length === 0 ? <div className="loader2"></div> : <></>}
+                </div>
             </div>
         )
     }

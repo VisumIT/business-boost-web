@@ -16,11 +16,9 @@ class Dashboard extends Component {
 
     render() {
 
-        var valor = 0;
-
-        const teste = getOrders().map(order => {
-            valor += order.totalPrice;
-        })
+        var valorTotal = getOrders().reduce(function(total, item){
+            return total + item.totalPrice
+        }, 0)
 
         var orders10 = []
 
@@ -31,28 +29,19 @@ class Dashboard extends Component {
         return (
 
             <div class="container-fluid">
-                <div class="row page-titles mt-2">
-                    <div class="col-md-5 align-self-center">
-                    </div>
-                    <div class="col-md-7 align-self-center text-right">
-                        <div class="d-flex justify-content-end align-items-center">
-                            <a class="btn btn-success d-none d-lg-block m-l-15" href="https://wrappixel.com/templates/elegant-admin/"> Upgrade To Pro</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-10">
                         <div class="card oh">
                             <div class="card-body">
                                 <div class="d-flex m-b-30 align-items-center no-block">
-                                    <h5 class="card-title ">Yearly Sales</h5>
+                                    <h5 class="card-title ">Dados Atualizados da Empresa</h5>
                                 </div>
-                                <div id="morris-area-chart" style={{ "height": "350px" }}></div>
+                                <div id="morris-area-chart" style={{ "height": "100" }}></div>
                             </div>
                             <div class="card-body bg-light">
                                 <div class="row text-center m-b-20">
                                     <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h2 class="m-b-0 font-light">{valor}</h2><span class="text-muted">Preço total de pedidos</span>
+                                        <h2 class="m-b-0 font-light">R$ {valorTotal.toString().replace('.',',')}</h2><span class="text-muted">Preço total de pedidos</span>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
                                         <h2 class="m-b-0 font-light">{getOrders().length}</h2><span class="text-muted">Total de Pedidos</span>

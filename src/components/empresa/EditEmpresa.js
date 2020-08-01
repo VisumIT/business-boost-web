@@ -52,7 +52,7 @@ class EditEmpresa extends Component {
 
     render() {
 
-        const { fictitiousName, companyName, cnpj, stateRegistration, email, password, site, description } = this.state
+        const { fictitiousName, companyName, cnpj,  stateRegistration, email, password, site, description } = this.state
 
         return (
             <div className="container">

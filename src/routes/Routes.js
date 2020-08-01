@@ -40,10 +40,13 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
                                         <Navbar />
                                     </div>
                                 </div>
-                                <div className="col-md-10">
+                                <div className="col-md-9">
                                     <div className="row">
                                         <Component {...props} />
                                     </div>
+                                </div>
+                                <div className="col-md-1">
+                                    <button type="button" className="btn btn-dark mt-1">Sair</button>
                                 </div>
                             </div>
                         </div>

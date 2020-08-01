@@ -55,7 +55,7 @@ function Login() {
     return (
         <div className="container">
             <nav className="navbar navbar-light ">
-                <a className="navbar-brand"><div></div></a>
+                <div className="navbar-brand"></div>
                 <form className="form-inline">
                     <button className="btn btn-light border border-dark mr-2" type="submit">
                         <a href="sign_in">Login</a>
@@ -106,7 +106,7 @@ function Login() {
                                 <input type="checkbox" value="remember-me"></input> Remember me
                                 </label>
                         </div>
-                        {buttonLogin == true ? buttonEnviar() : buttonEnviarLoading()}
+                        {buttonLogin === true ? buttonEnviar() : buttonEnviarLoading()}
                     </form>
                 </div>
                 <div className="col-md-2"></div>
