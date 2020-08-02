@@ -7,8 +7,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSave, faUndo} from '@fortawesome/free-solid-svg-icons'
 import {Button, Card} from 'react-bootstrap'
 import InputMask from 'react-input-mask';
-import api from '../../axios/api';
-import { getToken, getCompanyId } from '../../services/auth-service';
+import api from '../../services/api';
+import {  getCompanyId } from '../../services/auth-service';
+
 
 /*
 
@@ -67,8 +68,7 @@ function Cliente() {
         console.error(clientInput)
         
      const res = await  api.post('/companies/'+getCompanyId()+'/new-client',
-            clientInput,
-            {headers: {Authorization: getToken()}}
+            clientInput
         )
         
         console.log(res)

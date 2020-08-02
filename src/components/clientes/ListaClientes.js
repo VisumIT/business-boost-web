@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table, Image, ButtonGroup, Button } from 'react-bootstrap'
 
-import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faList, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
-import api from '../../axios/api'
+import api from '../../services/api';
 import { Link, Redirect } from 'react-router-dom'
-import { getToken, getCompanyId } from '../../services/auth-service';
+import { getCompanyId } from '../../services/auth-service';
 
 
 
@@ -38,10 +37,7 @@ export default class ListaRepresentante extends Component {
 
 
         const url = '/companies/' + getCompanyId() + '/customers'
-        api.get(url, {
-            headers:
-                { Authorization: getToken() }
-        })
+        api.get(url)
             .then(response => {
                 this.setState({
                     clientes: response.data
