@@ -7,14 +7,16 @@
   height: 10em;
 }
 .loader2 {
-  margin: 60px auto;
+  margin: 50px auto;
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid rgba(26,99,162, 0.2);
-  border-right: 1.1em solid rgba(26,99,162, 0.2);
-  border-bottom: 1.1em solid rgba(26,99,162, 0.2);
-  border-left: 1.1em solid #1a63a2;
+  border-top: 1.1em solid rgba(173, 173, 173, 0.2);
+  border-right: 1.1em solid rgba(173, 173, 173, 0.2);
+  /* border-right: 1.1em solid #007bff; */
+  border-bottom: 1.1em solid rgba(173, 173, 173, 0.2);
+  /* border-bottom: 1.1em solid #007bff; */
+  border-left: 1.1em solid #007bff;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
