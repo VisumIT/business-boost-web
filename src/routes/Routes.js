@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Inicial from '../components/Inicial';
 import Login from '../components/Login';
@@ -14,7 +14,7 @@ import CadastroProduto from '../components/produtos/CadastroProduto'
 import ImagemProduto from '../components/produtos/imagemProduto'
 import ContainerPedidos from '../components/pedidos/ContainerPedidos';
 import ListaRepresentantes from '../components/representantes/ListaRepresentantes';
-import { isSignedIn } from '../services/auth-service';
+import { isSignedIn, signOut } from '../services/auth-service';
 
 import './Routes.css';
 
@@ -27,6 +27,7 @@ const NotFound = () => {
 }
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
+    const [signOutSair, setSignOutSair] = useState(false)
     return (
         <Route
             {...rest}
@@ -46,7 +47,13 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
                                     </div>
                                 </div>
                                 <div className="col-md-1">
-                                    <button type="button" className="btn btn-dark mt-1">Sair</button>
+                                    <button 
+                                        type="button" 
+                                        className="btn btn-dark mt-1" 
+                                        onClick={()=> {
+                                            signOut()
+                                            setSignOutSair(true)
+                                        }}>Sair</button>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +67,6 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
 }
 
 function Routes() {
-
     return (
         <Router>
             <Switch>

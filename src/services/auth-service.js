@@ -31,6 +31,7 @@ export const signIn = async (acesso) => {
 
 export const signOut = () => {
     localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(COMPANY);
 }
 
 export const isSignedIn = () => {
