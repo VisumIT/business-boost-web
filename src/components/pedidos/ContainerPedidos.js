@@ -12,7 +12,23 @@ function ContainerPedidos() {
         async function listaPedidos() {
             let idCompany = getCompanyId()
             const res = await api.get(`/company/${idCompany}/orders`)
-            if (res.status === 200) setPedidos(res.data)
+            console.log(res.data)
+            if (res.status === 200) {
+                const dados = res.data.map(pedido => {
+                    let array = pedido.createDate.split("T")[0].split("-")
+                    let horario = pedido.createDate.split("T")[1].split(".")[0].split(":")
+
+                    pedido.createDate = `${array[2]}/${array[1]}/${array[0]} - ${horario[0]}:${horario[1]}`
+                    pedido.totalPrice = parseFloat(pedido.totalPrice).toFixed(2).replace(".",",")
+                    
+                    return pedido
+                })
+                setPedidos(dados)
+            }
+            
+            
+            
+            
         }
         listaPedidos();
     }, []);

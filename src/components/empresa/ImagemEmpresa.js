@@ -36,7 +36,7 @@ class CadastroImagem extends Component {
         e.preventDefault()
         const dados = this.state
         delete dados.imagePreview
-        await api.patch(`/companies/${getCompanyId()}/logo`, dados)
+        await api.post(`/companies/${getCompanyId()}/logo`, dados)
         this.props.history.push('/user/company')
     }
 

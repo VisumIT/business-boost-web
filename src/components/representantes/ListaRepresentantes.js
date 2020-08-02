@@ -47,6 +47,7 @@ export default class ListaRepresentante extends Component {
     }
 
     render() {
+        console.log(this.state.representantes)
         return (
             <div className="container-fluid">
                 <Link to="/user/sign_up_representatives">

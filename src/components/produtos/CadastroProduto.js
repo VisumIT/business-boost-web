@@ -36,18 +36,6 @@ class CadastroProduto extends Component {
     handlerSubmit = async (event) => {
         event.preventDefault();
 
-        var dados = JSON.stringify({
-            "name": this.state.name,
-            "price": this.state.price,
-            "discount": this.state.discount,
-            "brand": this.state.brand,
-            "category": this.state.category,
-            "reference": this.state.reference,
-            "deliveryTime": this.state.deliveryTime,
-            "status": this.state.status,
-            "imagesUrl": this.state.imagesUrl
-        });
-
         const verificaErro = (result) => {
             console.log(result)
             if (result.id != null) {
@@ -59,7 +47,7 @@ class CadastroProduto extends Component {
         }
 
         try {
-            const res = await api.post(`/company/${getCompanyId()}/products`, dados)
+            const res = await api.post(`/company/${getCompanyId()}/products`, this.state)
             if(res.status === 201){
                 verificaErro(res.data)
             }else{
@@ -92,6 +80,8 @@ class CadastroProduto extends Component {
                                 className="form-control"
                                 placeholder="Preço"
                                 type="number"
+                                step="0.01" 
+                                min="0" 
                                 name="price"
                                 onChange={this.handlerChange}
                             />

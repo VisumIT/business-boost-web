@@ -9,8 +9,9 @@ export const signIn = async (acesso) => {
         const res = await api.post('/login', acesso)
 
         const token = res.data.token
+        const dados = {"email": acesso.email}
         try {
-            const response = await api.get("/companies/whois")
+            const response = await api.post('/companies/whois', dados)
             console.log(response)
             var comp = response.data
             delete comp.password

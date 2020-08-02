@@ -36,10 +36,11 @@ function CardProduto({ products, refresh }) {
     return (
         <>
             <tr className="text-center">
+                <td className="td-produtos">{products.reference}</td>
                 <td className="td-produtos">{products.name}</td>
                 <td className="td-produtos">{products.brand}</td>
                 <td className="td-produtos">{products.category}</td>
-                <td className="td-produtos">R$ {products.price}</td>
+                <td className="td-produtos">R$ {products.totalPrice}</td>
                 <td className="td-produtos">{products.status}</td>
                 <td className="td-produtos">
                     <Link to={"/user/editproducts/" + products.id}>

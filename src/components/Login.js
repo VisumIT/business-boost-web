@@ -16,7 +16,7 @@ const MsgError = (props) => {
 
 function Login() {
 
-    const [email, setEmail] = useState('limpeza@gmail.com');
+    const [email, setEmail] = useState('seguranca@elisaericardotelecomme.com.br');
     const [password, setPassword] = useState('123456789');
     const [error, setError] = useState('');
     const [buttonLogin, setButtonLogin] = useState(true);
