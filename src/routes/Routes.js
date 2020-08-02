@@ -13,8 +13,11 @@ import Products from '../components/produtos/Produtos';
 import CadastroProduto from '../components/produtos/CadastroProduto'
 import ImagemProduto from '../components/produtos/imagemProduto'
 import ContainerPedidos from '../components/pedidos/ContainerPedidos';
-import ListaRepresentantes from '../components/representantes/ListaRepresentantes';
-import { isSignedIn, signOut } from '../services/auth-service';
+import ListaRepresentantes from '../components/representantes/ListaRepresentantes'
+import ListaClientes from '../components/clientes/ListaClientes'
+import CadastroClientes from '../components/clientes/CadastroClientes'
+
+import { isSignedIn } from '../services/auth-service';
 
 import './Routes.css';
 
@@ -79,6 +82,8 @@ function Routes() {
                 <PrivateRoutes path='/user/editrepresentative/:id' component={Representantes} />
                 <PrivateRoutes path='/user/sign_up_representatives' component={Representantes} />
                 <PrivateRoutes path='/user/representatives' component={ListaRepresentantes}/>
+                <PrivateRoutes path='/user/sign_up_clients' component={CadastroClientes} />
+                <PrivateRoutes path='/user/clients' component={ListaClientes}/>
                 <PrivateRoutes path='/user/products' component={Products} />
                 <PrivateRoutes path='/user/orders' component={ContainerPedidos} />
                 <PrivateRoutes path='/user/newProduct' component={CadastroProduto} />

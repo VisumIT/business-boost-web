@@ -20,6 +20,9 @@ function Navbar() {
             <li className="">
                 <Link className=" " to="/user/products">Produtos</Link>
             </li>
+            <li className="">
+                <Link className=" " to="/user/clients">Clientes</Link>
+            </li>
         </ul>
     )
 }

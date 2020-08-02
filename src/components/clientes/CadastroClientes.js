@@ -34,7 +34,7 @@ function Cliente() {
             neighborhood: '',
             city: '',
             cep: '',
-            cnpj: ''
+            
         }
     );
 
@@ -146,24 +146,6 @@ function Cliente() {
                                                     value={clientInput.cep}
                                                     name="cep"
                                                     mask="99999-999"
-                                                >
-
-                                                </InputMask>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label className="control-label">Cnpj</label>
-                                                <InputMask
-                                                    autoComplete="off"
-                                                    placeholder="Cep"
-                                                    type="text"
-                                                    className="form-control"
-                                                    onChange={handleChange}
-                                                    // required
-                                                    value={clientInput.cnpj}
-                                                    name="cnpj"
-                                                    mask="99.999.999/9999-99"
                                                 >
 
                                                 </InputMask>
