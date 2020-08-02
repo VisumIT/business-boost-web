@@ -1,7 +1,7 @@
 import PubSub from 'pubsub-js'
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Api from '../../axios/api';
+import api from '../../services/api';
 
 import { getCompanyId } from '../../services/auth-service'
 
@@ -11,7 +11,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 function CardProduto({ products, refresh }) {
 
     async function deleteProduto() {
-        await Api.delete(`/company/${getCompanyId()}/products/` + products.id)
+        await api.delete(`/company/${getCompanyId()}/products/` + products.id)
 
         return refresh()
     }
@@ -36,10 +36,11 @@ function CardProduto({ products, refresh }) {
     return (
         <>
             <tr className="text-center">
+                <td className="td-produtos">{products.reference}</td>
                 <td className="td-produtos">{products.name}</td>
                 <td className="td-produtos">{products.brand}</td>
                 <td className="td-produtos">{products.category}</td>
-                <td className="td-produtos">R${products.price}</td>
+                <td className="td-produtos">R$ {products.totalPrice}</td>
                 <td className="td-produtos">{products.status}</td>
                 <td className="td-produtos">
                     <Link to={"/user/editproducts/" + products.id}>

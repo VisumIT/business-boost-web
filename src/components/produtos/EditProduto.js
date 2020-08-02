@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Api from '../../axios/api'
+import api from '../../services/api'
 
 import { getCompanyId } from '../../services/auth-service'
 
@@ -19,7 +19,7 @@ class EditProduto extends Component {
 
     componentDidMount = async () => {
         const id = this.props.match.params.id
-        const res = await Api.get('/company/products/' + id)
+        const res = await api.get('/company/products/' + id)
 
         this.setState({
             id: res.data.id,
@@ -39,7 +39,7 @@ class EditProduto extends Component {
 
     handlerSubmit = async (event) => {
         event.preventDefault()
-        await Api.put(`/company/${getCompanyId()}/products`, this.state)
+        await api.put(`/company/${getCompanyId()}/products`, this.state)
         this.props.history.push('/user/products')
     }
 
