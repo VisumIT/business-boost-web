@@ -54,7 +54,7 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
                                         type="button" 
                                         className="btn btn-dark mt-1" 
                                         onClick={()=> {
-                                            signOut()
+                                            // signOut()
                                             setSignOutSair(true)
                                         }}>Sair</button>
                                 </div>
