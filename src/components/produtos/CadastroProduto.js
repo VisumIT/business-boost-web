@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import { confirmAlert } from 'react-confirm-alert'
-
-import { getCompanyId, getToken } from '../../services/auth-service'
+import { getCompanyId } from '../../services/auth-service'
+import api from '../../services/api';
 
 class CadastroProduto extends Component {
 
@@ -30,61 +29,12 @@ class CadastroProduto extends Component {
         })
     }
 
-    // async ErroCadastro(erro) {
-
-    //     if (erro.Errors) {
-    //         var mensagem = erro.Errors[0].Message
-    //         if (erro.Errors[0].Field === 'cnpj') {
-    //             inputEmail.style.borderColor = "80bdff"
-    //             inputCnpj.style.borderColor = "red";
-    //         }
-    //     } else {
-    //         var mensagem = erro.message
-    //         inputCnpj.style.borderColor = "#80bdff"
-    //         inputEmail.style.borderColor = "red"
-    //     }
-
-    //     confirmAlert({
-    //         title: 'Bussiness Boost',
-    //         message: "Registration error: " + mensagem,
-    //         buttons: [
-    //             {
-    //                 label: 'Ok'
-    //             }
-    //         ]
-    //     })
-    // }
-
     handlerChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
     handlerSubmit = async (event) => {
-
         event.preventDefault();
-
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", getToken());
-
-        var raw = JSON.stringify({
-            "name": this.state.name,
-            "price": this.state.price,
-            "discount": this.state.discount,
-            "brand": this.state.brand,
-            "category": this.state.category,
-            "reference": this.state.reference,
-            "deliveryTime": this.state.deliveryTime,
-            "status": this.state.status,
-            "imagesUrl": this.state.imagesUrl
-        });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
 
         const verificaErro = (result) => {
             console.log(result)
@@ -96,12 +46,16 @@ class CadastroProduto extends Component {
             }
         }
 
-
-        fetch(`http://52.3.253.2:8080/company/${getCompanyId()}/products`, requestOptions)
-            .then(response => response.json())
-            .then(result => verificaErro(result))
-            .catch(error => console.log(error));
-
+        try {
+            const res = await api.post(`/company/${getCompanyId()}/products`, this.state)
+            if(res.status === 201){
+                verificaErro(res.data)
+            }else{
+                console.log(res)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     render() {
@@ -126,6 +80,8 @@ class CadastroProduto extends Component {
                                 className="form-control"
                                 placeholder="Preço"
                                 type="number"
+                                step="0.01" 
+                                min="0" 
                                 name="price"
                                 onChange={this.handlerChange}
                             />

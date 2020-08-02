@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Api from '../../axios/api'
+import api from '../../services/api'
 
 import { getCompanyId } from '../../services/auth-service'
 
@@ -36,7 +36,7 @@ class CadastroImagem extends Component {
         e.preventDefault()
         const dados = this.state
         delete dados.imagePreview
-        await Api.patch(`/companies/${getCompanyId()}/logo`, dados)
+        await api.post(`/companies/${getCompanyId()}/logo`, dados)
         this.props.history.push('/user/company')
     }
 
@@ -54,17 +54,17 @@ class CadastroImagem extends Component {
         }
 
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <h1 className="mx-auto">Cadastro de Imagens</h1><br />
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                        <input 
-                        type="file" 
-                        class="custom-file-input" 
-                        id="inputGroupFile01" 
-                        aria-describedby="inputGroupFileAddon01"
-                        accept="image/png, image/jpeg"
-                        onChange={(e) => this._handleImageChange(e)} />
+                        <input
+                            type="file"
+                            class="custom-file-input"
+                            id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01"
+                            accept="image/png, image/jpeg"
+                            onChange={(e) => this._handleImageChange(e)} />
                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                     </div>
                 </div>

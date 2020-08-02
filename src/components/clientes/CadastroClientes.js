@@ -33,7 +33,8 @@ function Cliente() {
             uf: '',
             neighborhood: '',
             city: '',
-            cep: ''
+            cep: '',
+            
         }
     );
 

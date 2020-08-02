@@ -12,8 +12,8 @@ function Inicial() {
     return (
         <div>
             <nav class="navbar navbar_inicial navbar-expand-lg navbar-light margin">
-                <a class="navbar-brand" href="#">
-                    <img src={imagem} width="100" height="80"></img>
+                <a className="navbar-brand" href="/">
+                    <img src={imagem} width="100" alt="inicial" height="80" />
                 </a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav">
@@ -42,7 +42,7 @@ function Inicial() {
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src={imagem} class="rounded-circle" width="350" height="350"></img>
+                                <img src={imagem} class="rounded-circle" alt="inicial" width="350" height="350" />
                             </div>
                             <div class="col-lg-6 mt-5">
                                 <h3>A VisumIt é uma empresa focada em tecnologia, visando revolucionar o mercado com nossos sistemas. <br /> A VisumIt foi fundada em 2020 com a intenção de fazer da sua visão o nosso negocio</h3>
