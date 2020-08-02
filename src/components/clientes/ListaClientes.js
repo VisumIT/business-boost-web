@@ -68,16 +68,16 @@ export default class ListaRepresentante extends Component {
         console.log(this.state)
 
         return (
-            <div className="container">
-
-                <Table bordered hover striped variant="light">
-                    <Link to="/user/sign_up_clients">
-                        <Button variant="outline-success" size="sm">
+            <div className="container-fluid ">
+                <Link to="/user/sign_up_clients">
+                        <Button variant="outline-success mb-1" size="sm">
                             <FontAwesomeIcon icon={faList} />
                             {' '}
                             Cadastrar Cliente
                         </Button>
                     </Link>
+                <Table bordered hover striped variant="light">
+                    
                     <thead>
                         <tr>
                             <th>Nome</th>

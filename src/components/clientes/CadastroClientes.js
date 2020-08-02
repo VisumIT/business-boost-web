@@ -105,11 +105,11 @@ function Cliente() {
     }
  
     return (
-        <div className="container">
+        <div className="container-fluid">
             {/* {console.log(clientInput)} */}
             <div className="content">
                 <div className="row">
-                    <div className="col-md-8">
+                    <div className="col-md-9">
                         <div className="card">
                             <div className="header">
                                 <h4 className="title pt-2 ml-3">Cadastro de Cliente</h4>

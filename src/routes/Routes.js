@@ -17,7 +17,7 @@ import ListaRepresentantes from '../components/representantes/ListaRepresentante
 import ListaClientes from '../components/clientes/ListaClientes'
 import CadastroClientes from '../components/clientes/CadastroClientes'
 
-import { isSignedIn } from '../services/auth-service';
+import { isSignedIn, signOut } from '../services/auth-service';
 
 import './Routes.css';
 
@@ -54,7 +54,7 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
                                         type="button" 
                                         className="btn btn-dark mt-1" 
                                         onClick={()=> {
-                                            // signOut()
+                                            signOut()
                                             setSignOutSair(true)
                                         }}>Sair</button>
                                 </div>
