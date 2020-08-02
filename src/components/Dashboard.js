@@ -46,7 +46,7 @@ class Dashboard extends Component {
                                         <h2 class="m-b-0 font-light">{getOrders().length}</h2><span class="text-muted">Total de Pedidos</span>
                                     </div>
                                     <div class="col-lg-4 col-md-4 m-t-20">
-                                        <h2 class="m-b-0 font-light">2000</h2><span class="text-muted">Total de Representantes</span>
+                                        <h2 class="m-b-0 font-light">3</h2><span class="text-muted">Total de Representantes</span>
                                     </div>
                                 </div>
                             </div>

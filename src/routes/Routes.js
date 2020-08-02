@@ -36,11 +36,11 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
                         <div className="page-content">
                             <div className="row">
                                 <div className="col-md-2">
-                                    <div className="sidebar content-box" style={{ "display": "block" }}>
+                                    <div className="sidebar content-box mt-1" style={{ "display": "block" }}>
                                         <Navbar />
                                     </div>
                                 </div>
-                                <div className="col-md-9">
+                                <div className="col-md-9 mt-1">
                                     <div className="row">
                                         <Component {...props} />
                                     </div>

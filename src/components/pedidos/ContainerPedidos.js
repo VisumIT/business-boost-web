@@ -20,6 +20,17 @@ function ContainerPedidos() {
 
                     pedido.createDate = `${array[2]}/${array[1]}/${array[0]} - ${horario[0]}:${horario[1]}`
                     pedido.totalPrice = parseFloat(pedido.totalPrice).toFixed(2).replace(".",",")
+                    pedido.discountPrice = parseFloat(pedido.discountPrice).toFixed(2).replace(".",",")
+
+                    pedido.items = pedido.items.map(item=> {
+                        item.totalPrice = parseFloat(item.totalPrice).toFixed(2).replace(".",",")
+
+                        item.price = parseFloat(item.price).toFixed(2).replace(".",",")
+                        item.product.totalPrice = parseFloat(item.product.totalPrice).toFixed(2).replace(".",",")
+                        return item
+                    })
+
+                    pedido.priceToPay = "R$ " + parseFloat(pedido.priceToPay).toFixed(2).replace(".",",")
                     
                     return pedido
                 })

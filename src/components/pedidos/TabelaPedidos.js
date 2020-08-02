@@ -58,37 +58,62 @@ function TabelaSeries(props) {
     return (
         <>
             <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
+                <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header badge-info">
-                            <h5 className="modal-title" id="exampleModalLabel">{pedidoDetalhe.createDate}</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Data de Emissão: {pedidoDetalhe.createDate}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <table className="table table-hover">
-                                <thead>
+                            <h6>Número do Pedido: {pedidoDetalhe.id}</h6>
+                            <table class="table table-striped border-bottom">
+                                <thead class="bg-200 text-900">
                                     <tr>
-                                        <th>Numero do pedido</th>
-                                        <th>Status do pedido</th>
-                                        <th>Preço</th>
+                                        <th class="border-0">Referencia</th>
+                                        <th class="border-0">Produto</th>
+                                        <th class="border-0 text-center">Quantidade</th>
+                                        <th class="border-0 text-right">Preço Uni.</th>
+                                        <th class="border-0 text-right">Preço Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            {pedidoDetalhe.id}
-                                        </th>
-                                        <td>
-                                            {pedidoDetalhe.status}
-                                        </td>
-                                        <td>
-                                            {pedidoDetalhe.totalPrice}
-                                        </td>
-                                    </tr>
+                                    {pedidoDetalhe.length != '' ? pedidoDetalhe.items.map(item => (
+                                        <tr>
+                                            <td class="align-middle text-left">{item.product.reference}</td>
+                                            <td class="align-middle">
+                                                <h6 class="mb-0 text-nowrap">{item.product.name}</h6>
+                                                <p class="mb-0">{item.product.name.productInformation}</p>
+                                            </td>
+                                            <td class="align-middle text-center">{item.quantity}</td>
+                                            <td class="align-middle text-right">R$ {item.product.totalPrice}</td>
+                                            <td class="align-middle text-right">R$ {item.totalPrice}</td>
+                                        </tr>
+                                    )) : 
+                                    <></>}
                                 </tbody>
                             </table>
+                            <div class="row no-gutters justify-content-end">
+                                <div class="col-auto">
+                                    <table class="table table-sm table-borderless fs--1 text-right">
+                                        <tbody><tr>
+                                            <th class="text-900">Subtotal:</th>
+                                            <td class="font-weight-semi-bold">R$ {pedidoDetalhe.totalPrice}</td>
+                                        </tr>
+                                            <tr>
+                                                <th class="text-900">Desconto {pedidoDetalhe.dicountId}%:</th>
+                                                <td class="font-weight-semi-bold">R$ {pedidoDetalhe.discountPrice}</td>
+                                            </tr>
+                                            <tr class="border-top">
+                                                <th class="text-900">Total:</th>
+                                                <td class="font-weight-semi-bold">R$ {pedidoDetalhe.priceToPay}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>

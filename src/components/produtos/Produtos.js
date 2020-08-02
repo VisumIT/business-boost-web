@@ -48,7 +48,7 @@ class Produto extends Component {
         
         return (
             <div className="container-fluid">
-                <div className="card mt-3">
+                <div className="card">
                     <div className="card-header">
                         <h5>Lista de Produtos</h5>
                         <div class="form-inline my-2 my-lg-0">
